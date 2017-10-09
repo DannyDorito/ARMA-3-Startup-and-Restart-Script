@@ -13,7 +13,7 @@ SET crashes=0
 
 :start
 
-C:\Windows\System32\tasklist /FI "REPLACE.WITH.FULL.ERVER.PATH" 2>NUL | C:\Windows\System32\find /I /N "arma3server.exe">NUL
+C:\Windows\System32\tasklist /FI "REPLACE.WITH.FULL.SERVER.PATH" 2>NUL | C:\Windows\System32\find /I /N "arma3server.exe">NUL
 if "%ERRORLEVEL%"=="0" goto loop
 echo Pre startup initailzed
 echo.
