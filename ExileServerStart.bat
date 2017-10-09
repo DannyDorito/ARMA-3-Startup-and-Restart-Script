@@ -8,14 +8,14 @@
 :: The title of the console
 title Exile Server #1
 
-:: Vairable declaration for the amount of crashes
+:: Variable declaration for the amount of crashes
 SET crashes=0
 
 :start
 
 C:\Windows\System32\tasklist /FI "REPLACE.WITH.FULL.SERVER.PATH" 2>NUL | C:\Windows\System32\find /I /N "arma3server.exe">NUL
 if "%ERRORLEVEL%"=="0" goto loop
-echo Pre startup initailzed
+echo Pre startup initialized
 echo.
 
 ::Delete vars.Arma3Profile for performance gains
@@ -62,13 +62,13 @@ goto started
 
 :loop
 
-::Monitorting Loop
+::Monitoring Loop
 cls
 echo Server is already running, running monitoring loop
 
 :started
 
-::Restart/Crash Hander
+::Restart/Crash Handler
 set /A crashes=crashes+1
 C:\Windows\System32\timeout /t 5
 C:\Windows\System32\tasklist /FI "C:\arma eq arma3server.exe" 2>NUL | C:\Windows\System32\find /I /N "arma3server.exe">NUL
