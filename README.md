@@ -4,7 +4,7 @@ We all would love to see more Exile Mod servers, so why not create one?
 
 This is .bat file for all your ARMA 3 Exile Server startup needs!
 
-Created by: **Jstrow** and **DannyDorito** originally for CSG Exile, all are free to use and modify!
+Created by: **Jstrow** and **DannyDorito** originally for CSG Exile, under the GNU General Public License v3.0!
 
 ### Check out our Twitters!
 
