@@ -1,6 +1,6 @@
 ::
 ::	ExileServerStart.bat
-::	By: Jstrow and Danny Dorito originally for CSG Exile, all are free to use and modify
+::	By: Jstrow and Danny Dorito originally for CSG Exile, under the GNU General Public License v3.0
 ::  To stop the server with this running, close this first!
 ::
 @echo off
