@@ -8,7 +8,7 @@ Created by: **Jstrow** and **DannyDorito** originally for CSG Exile
 Under the GNU General Public License v3.0
 [LICENSE](https://github.com/DannyDorito/Exile-Server-Startup/blob/master/LICENSE)
 
-### Check out our Twitter!
+## Check out our Twitter!
 [@DannyDorito_](https://twitter.com/DannyDorito_)
 
 [@CSG_Exile](https://twitter.com/CSG_Exile)
@@ -57,6 +57,7 @@ ARMA Mods:
 http://steamcommunity.com/app/107410/workshop
 
 MySQL Backup:
+
 https://www.redolive.com/utah-web-designers-blog/automated-mysql-backup-for-windows
 
 ### How do I add x mod?
