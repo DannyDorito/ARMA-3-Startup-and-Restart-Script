@@ -86,6 +86,7 @@ Fill in the FULL\DIRECTORY\TO\mysqlbackup.bat with the full directory of your .b
 This will create a backup of your database every time you start the server.
 
 It is **strongly** advised to move these off the system your server runs on.
+
 Google Drive sync can be used to automatically upload the files to a external cloud, but other solutions are available!
 
 ### Will you add x feature, why is x broken?
