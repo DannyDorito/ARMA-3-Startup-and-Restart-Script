@@ -1,6 +1,8 @@
 ::
 ::	ExileServerStart.bat
-::	By: Jstrow and Danny Dorito originally for CSG Exile, under the GNU General Public License v3.0
+::	By: Jstrow and Danny Dorito originally for CSG Exile
+::  Under the GNU General Public License v3.0
+::	https://github.com/DannyDorito/Exile-Server-Startup/blob/master/LICENSE
 ::  To stop the server with this running, close this first!
 ::
 @echo off
@@ -20,14 +22,15 @@ echo.
 
 ::Delete vars.Arma3Profile for performance gains
 echo Deleting Server.vars.Arma3Profile
-:: For example: C:\arma\CSG\Users\CSG\CSG.vars.Arma3Profile
+::For example: C:\arma\CSG\Users\CSG\CSG.vars.Arma3Profile
 del /Q /F "REPLACE WITH server.vars.Arma3Profile"
 echo Delete complete
 
 ::Database backup script
-::Remove :: from the lines below to use
+::Uses https://www.redolive.com/utah-web-designers-blog/automated-mysql-backup-for-windows/
+::Please follow the installation steps before removing the :: from the below lines
 ::echo Starting Database Backup
-::start C:\Heidi\MySQLBackups\mysqlbackup.bat
+::start FULL\DIRECTORY\TO\mysqlbackup.bat
 ::echo Database Backup Complete
 
 ::Get from here https://a3.launcher.eu/download
@@ -58,6 +61,7 @@ cd "C:\arma"
 ::For more info see: https://community.bistudio.com/wiki/ArmA:_Server_configuration
 ::We used -autoinit -enableHT -loadMissionToMemory -high -filePatching -hugepages however your mileage may vary
 start "CSG" /min /wait arma3server.exe "-mod=@Mod1; @mod;" "-config=C:\arma\config.cfg" -port=SERVER.PORT "-profiles=PROFILE.NAME" "-cfg=PATH.TO.CFG.FILE" "-bepath=PATH.TO.BATTLEEYE" -name=PROFILE.NAME -autoinit
+echo To stop the server, close ExileServerStart.bat then the other tasks, otherwise it will restart
 goto started
 
 :loop

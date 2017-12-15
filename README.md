@@ -4,7 +4,9 @@ We all would love to see more Exile Mod servers, so why not create one?
 
 This is .bat file for all your ARMA 3 Exile Server startup needs!
 
-Created by: **Jstrow** and **DannyDorito** originally for CSG Exile, under the GNU General Public License v3.0!
+Created by: **Jstrow** and **DannyDorito** originally for CSG Exile
+Under the GNU General Public License v3.0
+https://github.com/DannyDorito/Exile-Server-Startup/blob/master/LICENSE
 
 ### Check out our Twitters!
 
@@ -18,8 +20,8 @@ https://twitter.com/CSG_Exile
 * Crash/Restart monitor - have had issues with ping function not working all of the time, this uses the Windows task manager
 * Last start date and time of the server
 * Profile.vars.Arma3Profile deleter, potential performance increase
-* Database backup script - WORK IN PROGRESS
-* Optional Arma 3 Launcher Mission Prefetch - Allows clients to download server file from A3Launcher, can reduce server load
+* Database backup script
+* Optional ARMA 3 Launcher Mission Prefetch from  - Allows clients to download server file from A3Launcher, can reduce server load
 * Optional Steam Automatic updater for ARMA 3
 * Optional Steam Automatic updater for mods - WORK IN PROGRESS
 * Detailed comments explaining what all of the script does
@@ -52,6 +54,9 @@ ARMA Mods:
 
 http://steamcommunity.com/app/107410/workshop
 
+MySQL Backup:
+https://www.redolive.com/utah-web-designers-blog/automated-mysql-backup-for-windows/
+
 ### How do I add x mod?
 If it is a serverside mod (9/10 times it is), then add it to your mod folder and goto the 'Start the Arma Server' section in this .bat
 
@@ -61,6 +66,17 @@ You would do:
 ``"-mod=@Mod1; @Mod2; @Mod3;"``
 
 If it is a client mod (e.g. JSRS) then there is **no need to add it to startup!**, just the .bikey into your BIKey folder
+**However** this is not always the case, please check the mod page before installing all mods!
 
-### Will you add this feature, why is x broken?
+### How do I backup my server with this?
+Head to MySQL Backup:
+https://www.redolive.com/utah-web-designers-blog/automated-mysql-backup-for-windows/
+
+Follow the installation instructions carefully
+Then in ExileServerStart.bat go to the Database backup script section and remove the :: from the bottom 3 lines
+Fill in the FULL\DIRECTORY\TO\mysqlbackup.bat with the full directory of your .bat location
+
+
+
+### Will you add x feature, why is x broken?
 Create a new issue or send DannyDorito a message on Twitter and we can see what we can do!
