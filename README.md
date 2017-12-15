@@ -62,6 +62,8 @@ https://www.redolive.com/utah-web-designers-blog/automated-mysql-backup-for-wind
 
 ### How do I add x mod?
 If it is a server mod, then add it to your mod folder and goto the 'Start the Arma Server' section in ExileServerStart.bat
+
+Please check the mod page before installing all mods!
 Please check the mod page before installing all mods!
 
 Add the mod to your mod parameter for example adding ``Mod3`` to ``"-mod=@Mod1; @Mod2;"``
@@ -69,7 +71,8 @@ Add the mod to your mod parameter for example adding ``Mod3`` to ``"-mod=@Mod1; 
 You would do:
 ``"-mod=@Mod1; @Mod2; @Mod3;"``
 
-If it is a client mod (e.g. JSRS) then there is **no need to add it to startup!**, just the .bikey into your BIKey folder
+If it is a client mod (e.g. JSRS) then there is **no need to add it to startup!** Just the .bikey into your BIKey folder
+
 **However** this is not always the case, please check the mod page before installing all mods!
 
 ### How do I backup my server with this?
