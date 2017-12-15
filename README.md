@@ -8,22 +8,21 @@ Created by: **Jstrow** and **DannyDorito** originally for CSG Exile
 Under the GNU General Public License v3.0
 https://github.com/DannyDorito/Exile-Server-Startup/blob/master/LICENSE
 
-### Check out our Twitters!
+### Check out our Twitter!
 
 https://twitter.com/DannyDorito_
 
 https://twitter.com/CSG_Exile
 
 ## This file includes:
-
 * Server startup - parameters, mods, optional arguments for potential performance increase
-* Crash/Restart monitor - have had issues with ping function not working all of the time, this uses the Windows task manager
+* Crash/Restart monitor - have had issues with local ping function not working, this uses the Windows Task Manager
 * Last start date and time of the server
 * Profile.vars.Arma3Profile deleter, potential performance increase
 * Optional Database backup script
 * Optional ARMA 3 Launcher Mission Prefetch from  - Allows clients to download server file from A3Launcher, can reduce server load
 * Optional Steam Automatic updater for ARMA 3
-* Detailed comments explaining what all of the script does
+* Plus detailed comments explaining what all of the script does
 
 ## Features to be added:
 * Optional Steam Automatic updater for mods
@@ -62,7 +61,8 @@ MySQL Backup:
 https://www.redolive.com/utah-web-designers-blog/automated-mysql-backup-for-windows
 
 ### How do I add x mod?
-If it is a serverside mod (9/10 times it is), then add it to your mod folder and goto the 'Start the Arma Server' section in this .bat
+If it is a server mod, then add it to your mod folder and goto the 'Start the Arma Server' section in ExileServerStart.bat
+Please check the mod page before installing all mods!
 
 Add the mod to your mod parameter for example adding ``Mod3`` to ``"-mod=@Mod1; @Mod2;"``
 
@@ -86,4 +86,4 @@ It is **strongly** advised to move these off the system your server runs on.
 Google Drive sync can be used to automatically upload the files to a external cloud, but other solutions are available!
 
 ### Will you add x feature, why is x broken?
-Create a new issue or send DannyDorito a message on Twitter and we can see what we can do!
+Create a new issue or send Danny Dorito a message on Twitter and we can see what we can do!
