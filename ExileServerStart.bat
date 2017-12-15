@@ -27,7 +27,7 @@ del /Q /F "REPLACE WITH server.vars.Arma3Profile"
 echo Delete complete
 
 ::Database backup script
-::Uses https://www.redolive.com/utah-web-designers-blog/automated-mysql-backup-for-windows/
+::Uses https://www.redolive.com/utah-web-designers-blog/automated-mysql-backup-for-windows
 ::Please follow the installation steps before removing the :: from the below lines
 ::echo Starting Database Backup
 ::start FULL\DIRECTORY\TO\mysqlbackup.bat

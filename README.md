@@ -20,11 +20,15 @@ https://twitter.com/CSG_Exile
 * Crash/Restart monitor - have had issues with ping function not working all of the time, this uses the Windows task manager
 * Last start date and time of the server
 * Profile.vars.Arma3Profile deleter, potential performance increase
-* Database backup script
+* Optional Database backup script
 * Optional ARMA 3 Launcher Mission Prefetch from  - Allows clients to download server file from A3Launcher, can reduce server load
 * Optional Steam Automatic updater for ARMA 3
-* Optional Steam Automatic updater for mods - WORK IN PROGRESS
 * Detailed comments explaining what all of the script does
+
+## Features to be added:
+* Optional Steam Automatic updater for mods
+* Database file sync to cloud storage
+* Automatic PBO packer with Mikero's tools support
 
 ## FAQ
 
@@ -55,7 +59,7 @@ ARMA Mods:
 http://steamcommunity.com/app/107410/workshop
 
 MySQL Backup:
-https://www.redolive.com/utah-web-designers-blog/automated-mysql-backup-for-windows/
+https://www.redolive.com/utah-web-designers-blog/automated-mysql-backup-for-windows
 
 ### How do I add x mod?
 If it is a serverside mod (9/10 times it is), then add it to your mod folder and goto the 'Start the Arma Server' section in this .bat
@@ -72,11 +76,14 @@ If it is a client mod (e.g. JSRS) then there is **no need to add it to startup!*
 Head to MySQL Backup:
 https://www.redolive.com/utah-web-designers-blog/automated-mysql-backup-for-windows/
 
-Follow the installation instructions carefully
+Follow the installation instructions carefully!
 Then in ExileServerStart.bat go to the Database backup script section and remove the :: from the bottom 3 lines
-Fill in the FULL\DIRECTORY\TO\mysqlbackup.bat with the full directory of your .bat location
+Fill in the FULL\DIRECTORY\TO\mysqlbackup.bat with the full directory of your .bat location.
 
+This will create a backup of your database every time you start the server.
 
+It is **strongly** advised to move these off the system your server runs on.
+Google Drive sync can be used to automatically upload the files to a external cloud, but other solutions are available!
 
 ### Will you add x feature, why is x broken?
 Create a new issue or send DannyDorito a message on Twitter and we can see what we can do!
