@@ -46,7 +46,7 @@ http://www.exilemod.com/downloads
 
 ARMA 3 Launcher Server Prefetch:
 
-https://a3.launcher.eu/download
+https://a3.launcher.eu/MissionPrefetchServer.zip
 
 SteamCMD:
 
@@ -63,8 +63,7 @@ https://www.redolive.com/utah-web-designers-blog/automated-mysql-backup-for-wind
 ### How do I add x mod?
 If it is a server mod, then add it to your mod folder and goto the 'Start the Arma Server' section in ExileServerStart.bat
 
-Please check the mod page before installing all mods!
-Please check the mod page before installing all mods!
+**Please check the mod page before installing all mods!**
 
 Add the mod to your mod parameter for example adding ``Mod3`` to ``"-mod=@Mod1; @Mod2;"``
 
@@ -73,15 +72,17 @@ You would do:
 
 If it is a client mod (e.g. JSRS) then there is **no need to add it to startup!** Just the .bikey into your BIKey folder
 
-**However** this is not always the case, please check the mod page before installing all mods!
+**However** this is not always the case, **please check the mod page before installing all mods!**
 
 ### How do I backup my server with this?
 Head to MySQL Backup:
 https://www.redolive.com/utah-web-designers-blog/automated-mysql-backup-for-windows
 
-Follow the installation instructions carefully!
-Then in ExileServerStart.bat go to the Database backup script section and remove the :: from the bottom 3 lines
-Fill in the FULL\DIRECTORY\TO\mysqlbackup.bat with the full directory of your .bat location.
+Follow the installation instructions on the website **carefully!**
+
+Then in ExileServerStart.bat go to the Database backup script section and **remove** the :: from the bottom 3 lines
+
+Fill in the ``FULL\DIRECTORY\TO\mysqlbackup.bat`` with the full directory of **your** .bat location.
 
 This will create a backup of your database every time you start the server.
 
