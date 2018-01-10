@@ -78,6 +78,7 @@ If it is a client mod (e.g. JSRS) then there is **no need to add it to startup!*
 
 ### How do I backup my server with this?
 Head to MySQL Backup:
+
 https://www.redolive.com/utah-web-designers-blog/automated-mysql-backup-for-windows
 
 Follow the installation instructions on the website **carefully!**
