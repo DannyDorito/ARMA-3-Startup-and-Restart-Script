@@ -88,3 +88,6 @@ If it is a client mod (e.g. JSRS) then there is **no need to add it to startup!*
 It is **strongly** advised to move these off the system your server runs on.
 
 Google Drive sync can be used to automatically upload the files to a external cloud, but other solutions are available!
+
+### Will you add x feature, why is x broken?
+Create a new issue or send Danny Dorito a message on Twitter and we can see what we can do!
