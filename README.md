@@ -1,9 +1,9 @@
 # ARMA 3 Exile Startup Script
 We all would **love** to see more Exile Mod servers, so why not create one?
 
-This is .bat file for all your ARMA 3 Exile Server startup needs!
+This is .bat file for **all** your ARMA 3 Exile Server startup needs!
 
-Created by: **Jstrow** and **DannyDorito** originally for CSG Exile
+Created by: **Jstrow** and **DannyDorito** originally for [CSG Exile](https://www.csgcommunity.com)
 
 Under the GNU General Public License v3.0
 
@@ -16,16 +16,17 @@ Under the GNU General Public License v3.0
 
 ## Features:
 * Server startup - parameters, mods, optional arguments for potential performance increase
-* Crash/Restart monitor - have had issues with local ping function not working, this uses the Windows Task Manager
-* Last start date and time of the server
+* Crash/Restart monitor - this uses the Windows Task Manager and not local address pinging
+* The last start date and time of the server
 * Profile.vars.Arma3Profile deleter, potential performance increase
+* Support for 64bit servers
 * Optional Database backup script
-* Optional ARMA 3 Launcher Mission Prefetch from  - Allows clients to download server file from A3Launcher
+* Optional ARMA 3 Launcher Mission Prefetch from - Allows clients to download server file from A3Launcher
 * Optional Steam Automatic updater for ARMA 3
-* Plus detailed comments explaining what all of the script does
 
 ## Features to be added:
-* Optional Steam Automatic updater for mods
+* Optional Steam automatic updater for mods
+* Optional A3Launcher automatic updater for mods
 * Database file sync to cloud storage
 * Automatic PBO packer with Mikero's tools support
 
@@ -34,11 +35,10 @@ Under the GNU General Public License v3.0
 ### How do I use this?
 1. Download the latest version
 2. Place in a suitable directory, for example your Desktop
-3. Replace all the text in the file like **REPLACE.WITH.FULL.SERVER.PATH** with the corresponding path
-   - For example, ``del /Q /F "REPLACE WITH server.vars.Arma3Profile"``
-   - Would will look like this: ``del /Q /F "C:\arma\CSG\Users\CSG\CSG.vars.Arma3Profile"``
-4. Run the ``ExileServerStart.bat`` file, if there is an error redo step 3
-5. To shutdown the server close the console window first, **then** shutdown the server
+3. Replace all of the variables that you require, e.g. ``SET path_to_ServervarsArma3Profile=changeme`` to ``SET path_to_ServervarsArma3Profile=C:\arma\CSG\Users\CSG\CSG.vars.Arma3Profile``.
+4. Enabling some features, for example ``SET use_steam_updater=false`` to ``SET use_steam_updater=true``, require more variables to be set, if unsure run the ``ExileServerStart.bat`` file and see if there is any errors.
+5. Run the ``ExileServerStart.bat`` fill and see if there is any errors, **if so**, repeat step 3 and 4.
+6. To shutdown the server close the console window first (and all other windows e.g BattleEye or MissionPrefetchServer), **then** shutdown the server.
 
 ### Where do I download x?
 
@@ -56,12 +56,13 @@ Under the GNU General Public License v3.0
 
 #### ARMA Mods
 
-[Steam Workshop Link](https://developer.valvesoftware.com/wiki/SteamCMD)
+[Steam Workshop](https://developer.valvesoftware.com/wiki/SteamCMD)
+
 [Armaholic Link](http://www.armaholic.com)
 
 #### MySQL Backup
 
-[MySQL Backup Link](https://www.redolive.com/utah-web-designers-blog/automated-mysql-backup-for-windows)
+[MySQL Backup](https://www.redolive.com/utah-web-designers-blog/automated-mysql-backup-for-windows)
 
 ### How do I add x mod?
 If it is a **server** mod, then add it to your mod folder and goto the 'Start the ARMA Server' section in ExileServerStart.bat
@@ -73,7 +74,7 @@ Add the mod to your mod parameter for example adding ``Mod3`` to ``"-mod=@Mod1; 
 You would do:
 ``"-mod=@Mod1; @Mod2; @Mod3;"``
 
-If it is a client mod (e.g. JSRS) then there is **no need to add it to startup!** Just the .bikey into your BIKey folder
+If it is a client mod (e.g. JSRS or Blastcore) then there is **no need to add it to startup!** Usually just the .bikey into your BIKey folder.
 
 **However** this is not always the case, **please check the mod page before installing all mods!**
 
@@ -81,8 +82,7 @@ If it is a client mod (e.g. JSRS) then there is **no need to add it to startup!*
 
 * Head to MySQL Backup linked above
 * Follow the installation instructions on the website **carefully!**
-* Then in ExileServerStart.bat go to the Database backup script section and **remove** the :: from the bottom 3 lines
-* Fill in the ``FULL\DIRECTORY\TO\mysqlbackup.bat`` with the full directory of **your** .bat location.
+* Fill in the ``sql_backup_directory`` with the full directory of **your** .bat location.
 * This will create a backup of your database every time you start the server.
 
 It is **strongly** advised to move these off the system your server runs on.
