@@ -1,9 +1,6 @@
 ::
 ::  ExileServerStart.bat
 ::  By: Jstrow and Danny Dorito originally for CSG Exile
-::  Under the GNU General Public License v3.0
-::  https://github.com/DannyDorito/Exile-Server-Startup/blob/master/LICENSE
-::  To stop the server with this running, close this first!
 ::
 
 :: Command window name, does not affect anything else
