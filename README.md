@@ -5,10 +5,6 @@ This is .bat file for **all** your ARMA 3 Exile Server startup needs!
 
 Created by: **Jstrow** and **DannyDorito** originally for [CSG Exile](https://www.csgcommunity.com)
 
-Under the GNU General Public License v3.0
-
-[LICENSE](https://github.com/DannyDorito/Exile-Server-Startup/blob/master/LICENSE)
-
 ## Check out our Twitter!
 [@DannyDorito_](https://twitter.com/DannyDorito_)
 
