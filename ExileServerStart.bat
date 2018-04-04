@@ -1,8 +1,8 @@
 ::
-::	ExileServerStart.bat
-::	By: Jstrow and Danny Dorito originally for CSG Exile
+::  ExileServerStart.bat
+::  By: Jstrow and Danny Dorito originally for CSG Exile
 ::  Under the GNU General Public License v3.0
-::	https://github.com/DannyDorito/Exile-Server-Startup/blob/master/LICENSE
+::  https://github.com/DannyDorito/Exile-Server-Startup/blob/master/LICENSE
 ::  To stop the server with this running, close this first!
 ::
 
@@ -66,21 +66,21 @@ title %server_name%
 if "%path_to_server_executable%" == "changeme" goto error_server_path
 if "%path_to_ServervarsArma3Profile%" == "changeme" goto error_vars_path
 if "%64bit_server%" == "true" (
-	SET exe_name=arma3server_x64.exe
+  SET exe_name=arma3server_x64.exe
 )
 
 if "%mission_prefetch%" == "true" (
-	if "%server_port_number%" == "0" goto error_server_port
-	if "%server_ip_address%" == "0.0.0.0" goto error_server_ip
-	if "%wait_time_in_seconds%" == "0" goto error_timeout
-	if "%mission_prefetch_server_port%" == "0" goto error_prefetch_port
-	if "%path_to_mission_pbo%" == "changeme" goto error_pbo_path
+  if "%server_port_number%" == "0" goto error_server_port
+  if "%server_ip_address%" == "0.0.0.0" goto error_server_ip
+  if "%wait_time_in_seconds%" == "0" goto error_timeout
+  if "%mission_prefetch_server_port%" == "0" goto error_prefetch_port
+  if "%path_to_mission_pbo%" == "changeme" goto error_pbo_path
 )
 
 if "%use_steam_updater%" == "true" (
-	if "%path_to_steamcmd_executable%" == "changeme" goto error_steamcmd
-	if "%account_name%" == "changeme" goto error_account_name
-	if "%account_password%" == "changeme" goto error_account_password
+  if "%path_to_steamcmd_executable%" == "changeme" goto error_steamcmd
+  if "%account_name%" == "changeme" goto error_account_name
+  if "%account_password%" == "changeme" goto error_account_password
 )
 :start
 
@@ -93,27 +93,27 @@ echo Delete complete
 
 ::Uses https://www.redolive.com/utah-web-designers-blog/automated-mysql-backup-for-windows
 if "%backup%" == "true" (
-	echo Starting Database Backup
-	start %sql_backup_directory%
-	echo Database backup complete
+  echo Starting Database Backup
+  start %sql_backup_directory%
+  echo Database backup complete
 )
 
 ::Get from here https://a3.launcher.eu/download
 ::If you use the optional Arma 3 Launcher Mission Prefetch
 ::Remove :: from the lines below to use, also remove from Restart/Crash Hander section
 if "%mission_prefetch%" == "true" (
-	echo Starting MissionPrefetchServer
-	start %path_to_mission_prefetch_server_executable% %server_port_number% %path_to_mission_pbo% %server_ip_address% %mission_prefetch_server_port% %wait_time_in_seconds%
-	echo MissionPrefetchServer Started
+  echo Starting MissionPrefetchServer
+  start %path_to_mission_prefetch_server_executable% %server_port_number% %path_to_mission_pbo% %server_ip_address% %mission_prefetch_server_port% %wait_time_in_seconds%
+  echo MissionPrefetchServer Started
 )
 
 ::Steam automatic update for the server files
 ::Get from here https://developer.valvesoftware.com/wiki/SteamCMD
 if "%use_steam_updater%" == "true" (
-	echo Steam Automatic Update Starting
-	start %path_to_steamcmd_executable% +login %account_name% %account_password% +force_install_dir c:\arma\ +app_update 233780 validate +quit
-	TIMEOUT /T %updater_wait_time%
-	echo Steam Automatic Update Completed
+  echo Steam Automatic Update Starting
+  start %path_to_steamcmd_executable% +login %account_name% %account_password% +force_install_dir c:\arma\ +app_update 233780 validate +quit
+  TIMEOUT /T %updater_wait_time%
+  echo Steam Automatic Update Completed
 )
 
 echo.
@@ -143,7 +143,7 @@ set /A crashes+=1
 C:\Windows\System32\timeout /t 5
 C:\Windows\System32\tasklist /FI "C:\arma eq %exe_name%" 2>NUL | C:\Windows\System32\find /I /N %exe_name%>NUL
 if "%mission_prefetch%"=="true" (
-	taskkill /F /IM MissionPrefetchServer.exe
+  taskkill /F /IM MissionPrefetchServer.exe
 )
 if "%ERRORLEVEL%"=="0" goto loop
 cls
