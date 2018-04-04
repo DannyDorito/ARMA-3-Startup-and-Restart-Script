@@ -123,7 +123,7 @@ echo Restarts/Crashes: %loops%
 cd "C:\arma"
 ::For more info see: https://community.bistudio.com/wiki/ArmA:_Server_configuration
 ::We used -autoinit -enableHT -loadMissionToMemory -high -filePatching -hugepages however your mileage may vary
-start "CSG" /min /wait arma3server.exe "-mod=@Mod1; @mod;" "-config=C:\arma\config.cfg" -port=SERVER.PORT "-profiles=PROFILE.NAME" "-cfg=PATH.TO.CFG.FILE" "-bepath=PATH.TO.BATTLEEYE" -name=PROFILE.NAME -autoinit
+start "CSG" /min /wait arma3server.exe "-mod=@Mod1; @mod;" "-config=C:\arma\config.cfg" -port=SERVER.PORT "-profiles=PROFILE.NAME" "-cfg=PATH.TO.CFG.FILE" "-bepath=PATH.TO.BATTLEEYE" -name=PROFILE.NAME -autoinit -bandwidthAlg=2
 echo To stop the server, close ExileServerStart.bat then the other tasks, otherwise it will restart
 goto started
 
