@@ -36,30 +36,6 @@ Created by: **Jstrow** and **DannyDorito** originally for [CSG Exile](https://ww
 5. Run the ``ExileServerStart.bat`` fill and see if there is any errors, **if so**, repeat step 3 and 4.
 6. To shutdown the server close the console window first (and all other windows e.g BattleEye or MissionPrefetchServer), **then** shutdown the server.
 
-### Where do I download x?
-
-#### Exile Mod client & server files
-
-[Exile Mod Download](http://www.exilemod.com/downloads)
-
-#### ARMA 3 Launcher Server Prefetch
-
-[ARMA 3 Launcher Server Prefetch Download](https://a3.launcher.eu/MissionPrefetchServer.zip)
-
-#### SteamCMD
-
-[SteamCMD Wiki](https://developer.valvesoftware.com/wiki/SteamCMD)
-
-#### ARMA Mods
-
-[Steam Workshop](https://developer.valvesoftware.com/wiki/SteamCMD)
-
-[Armaholic Link](http://www.armaholic.com)
-
-#### MySQL Backup
-
-[MySQL Backup](https://www.redolive.com/utah-web-designers-blog/automated-mysql-backup-for-windows)
-
 ### How do I add x mod?
 If it is a **server** mod, then add it to your mod folder and goto the 'Start the ARMA Server' section in ExileServerStart.bat
 
@@ -84,6 +60,30 @@ If it is a client mod (e.g. JSRS or Blastcore) then there is **no need to add it
 It is **strongly** advised to move these off the system your server runs on.
 
 Google Drive sync can be used to automatically upload the files to a external cloud, but other solutions are available!
+
+### Where do I download x?
+
+#### Exile Mod client & server files
+
+[Exile Mod Download](http://www.exilemod.com/downloads)
+
+#### ARMA 3 Launcher Server Prefetch
+
+[ARMA 3 Launcher Server Prefetch Download](https://a3.launcher.eu/MissionPrefetchServer.zip)
+
+#### SteamCMD
+
+[SteamCMD Wiki](https://developer.valvesoftware.com/wiki/SteamCMD)
+
+#### ARMA Mods
+
+[Steam Workshop](https://developer.valvesoftware.com/wiki/SteamCMD)
+
+[Armaholic Link](http://www.armaholic.com)
+
+#### MySQL Backup
+
+[MySQL Backup](https://www.redolive.com/utah-web-designers-blog/automated-mysql-backup-for-windows)
 
 ### Will you add x feature, why is x broken?
 Create a new issue or send Danny Dorito a message on Twitter and we can see what we can do!
