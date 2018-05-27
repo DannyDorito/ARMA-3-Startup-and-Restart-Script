@@ -59,7 +59,7 @@ SET account_name=changeme
 :: Set the above Steam account password
 SET account_password=changeme
 :: Set the wait time of the update service in seconds, default is 40 seconds
-SET updater_wait_time=40 
+SET updater_wait_time=40
 ::
 ::  DO NOT CHANGE ANYTHING BELOW THIS POINT
 ::
@@ -104,7 +104,7 @@ if "%path_to_server_cfg%" == "changeme" (
 	goto error
 )
 if "%64bit_server%" == "true" (
-  SET exe_name=arma3server_x64.exe
+	SET exe_name=arma3server_x64.exe
 )
 
 if "%mission_prefetch%" == "true" (
@@ -127,21 +127,21 @@ if "%mission_prefetch%" == "true" (
 )
 
 if "%use_steam_updater%" == "true" (
-  if "%path_to_steamcmd_executable%" == "changeme" (
+	if "%path_to_steamcmd_executable%" == "changeme" (
 	SET error=path_to_steamcmd_executable
 	goto error
 	)
-  if "%account_name%" == "changeme" (
+	if "%account_name%" == "changeme" (
 	SET error=account_name
 	goto error
 	)
-  if "%account_password%" == "changeme" (
+	if "%account_password%" == "changeme" (
 	SET error=account_password
 	goto error
 	)
 )
-:loop
 
+:loop
 C:\Windows\System32\tasklist /FI %path_to_server_executable% 2>NUL | C:\Windows\System32\find /I /N %exe_name%>NUL
 if "%ERRORLEVEL%" == "0" goto loop
 
@@ -151,27 +151,27 @@ echo Delete complete
 
 ::Uses https://www.redolive.com/utah-web-designers-blog/automated-mysql-backup-for-windows
 if "%backup%" == "true" (
-  echo Starting Database Backup
-  start %path_to_sql_backup%
-  echo Database backup complete
+	echo Starting Database Backup
+	start %path_to_sql_backup%
+	echo Database backup complete
 )
 
 ::Get from here https://a3.launcher.eu/download
 ::If you use the optional Arma 3 Launcher Mission Prefetch
 ::Remove :: from the lines below to use, also remove from Restart/Crash Hander section
 if "%mission_prefetch%" == "true" (
-  echo Starting MissionPrefetchServer
-  start %path_to_mission_prefetch_server_executable% %server_port_number% %path_to_mission_pbo% %server_ip_address% %mission_prefetch_server_port% %wait_time_in_seconds%
-  echo MissionPrefetchServer Started
+	echo Starting MissionPrefetchServer
+	start %path_to_mission_prefetch_server_executable% %server_port_number% %path_to_mission_pbo% %server_ip_address% %mission_prefetch_server_port% %wait_time_in_seconds%
+	echo MissionPrefetchServer Started
 )
 
 ::Steam automatic update for the server files
 ::Get from here https://developer.valvesoftware.com/wiki/SteamCMD
 if "%use_steam_updater%" == "true" (
-  echo Steam Automatic Update Starting
-  start %path_to_steamcmd_executable% +login %account_name% %account_password% +force_install_dir c:\arma\ +app_update 233780 validate +quit
-  TIMEOUT /T %updater_wait_time%
-  echo Steam Automatic Update Completed
+	echo Steam Automatic Update Starting
+	start %path_to_steamcmd_executable% +login %account_name% %account_password% +force_install_dir c:\arma\ +app_update 233780 validate +quit
+	TIMEOUT /T %updater_wait_time%
+	echo Steam Automatic Update Completed
 )
 
 echo.
@@ -189,19 +189,17 @@ echo To stop the server, close ExileServerStart.bat then the other tasks, otherw
 goto looping
 
 :loop
-
 ::Monitoring Loop
 cls
 echo Server is already running, running monitoring loop
 
 :looping
-
 ::Restart/Crash Handler
 set /A crashes+=1
 C:\Windows\System32\timeout /t 5
 C:\Windows\System32\tasklist /FI "%path_to_server_executable% eq %exe_name%" 2>NUL | C:\Windows\System32\find /I /N %exe_name%>NUL
 if "%mission_prefetch%"=="true" (
-  taskkill /F /IM MissionPrefetchServer.exe
+	taskkill /F /IM MissionPrefetchServer.exe
 )
 if "%ERRORLEVEL%"=="0" goto loop
 cls
