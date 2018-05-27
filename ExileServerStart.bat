@@ -64,42 +64,88 @@ SET updater_wait_time=40
 ::  DO NOT CHANGE ANYTHING BELOW THIS POINT
 ::
 @echo off
+SET error=""
 SET loops=0
 
 echo Pre startup initialised
 echo .
 title %server_name%
 
-if "%path_to_server_executable%" == "changeme" goto error_server_path
-if "%path_to_ServervarsArma3Profile%" == "changeme" goto error_vars_path
-if "%server_port_number%" == "0" goto error_server_port
-if "%profile_name%" == "changeme" goto error_profile_name
-if "%path_to_battleye%" == "changeme" goto error_battleye_path
-if "%modlist%" == "@Mod1; @Mod2; @Mod3;" goto error_modlist
-if "%basic_cfg_location%" == "changeme" goto error_basic_cfg
-if "%server_cfg_location%" == "changeme" goto error_server_cfg
+if "%path_to_server_executable%" == "changeme" (
+	SET error=path_to_server_executable
+	goto error
+)
+if "%path_to_ServervarsArma3Profile%" == "changeme" (
+	SET error=path_to_ServervarsArma3Profile
+	goto error
+)
+if "%server_port_number%" == "0" (
+	SET error=server_port_number
+	goto error
+)
+if "%profile_name%" == "changeme" (
+	SET error=profile_name
+	goto error
+)
+if "%path_to_battleye%" == "changeme" (
+	SET error=path_to_battleye
+	goto error
+)
+if "%modlist%" == "@Mod1; @Mod2; @Mod3;" (
+	SET error=modlist
+	goto error
+)
+if "%basic_cfg_location%" == "changeme" (
+	SET error=basic_cfg_location
+	goto error
+)
+if "%server_cfg_location%" == "changeme" (
+	SET error=server_cfg_location
+	goto error
+)
 if "%64bit_server%" == "true" (
   SET exe_name=arma3server_x64.exe
 )
 
 if "%mission_prefetch%" == "true" (
-  if "%server_ip_address%" == "0.0.0.0" goto error_server_ip
-  if "%wait_time_in_seconds%" == "0" goto error_timeout
-  if "%mission_prefetch_server_port%" == "0" goto error_prefetch_port
-  if "%path_to_mission_pbo%" == "changeme" goto error_pbo_path
+  if "%server_ip_address%" == "0.0.0.0" (
+	SET error=server_ip_address
+	goto error
+	)
+  if "%wait_time_in_seconds%" == "0" (
+	SET error=wait_time_in_seconds
+	goto error
+	)
+  if "%mission_prefetch_server_port%" == "0" (
+	SET error=mission_prefetch_server_port
+	goto error
+	)
+  if "%path_to_mission_pbo%" == "changeme" (
+	SET error=path_to_server_executable
+	goto error
+	)
 )
 
 if "%use_steam_updater%" == "true" (
-  if "%path_to_steamcmd_executable%" == "changeme" goto error_steamcmd
-  if "%account_name%" == "changeme" goto error_account_name
-  if "%account_password%" == "changeme" goto error_account_password
+  if "%path_to_steamcmd_executable%" == "changeme" (
+	SET error=path_to_steamcmd_executable
+	goto error
+	)
+  if "%account_name%" == "changeme" (
+	SET error=account_name
+	goto error
+	)
+  if "%account_password%" == "changeme" (
+	SET error=account_password
+	goto error
+	)
 )
-:start
+:loop
 
 C:\Windows\System32\tasklist /FI %path_to_server_executable% 2>NUL | C:\Windows\System32\find /I /N %exe_name%>NUL
 if "%ERRORLEVEL%" == "0" goto loop
 
-echo Deleting Server.vars.Arma3Profile
+echo Deleting %profile_name%
 del /Q /F %path_to_ServervarsArma3Profile%
 echo Delete complete
 
@@ -140,7 +186,7 @@ cd %path_to_server_executable%
 ::We used -autoinit -enableHT -loadMissionToMemory -high -filePatching -hugepages -bandwidthAlg=2 however your mileage may vary
 start %profile_name% /min /wait %exe_name% "-mod=%modlist%" "-config=%server_cfg_location%" -port=%server_port_number% "-profiles=%profile_name%" "-cfg=%basic_cfg_location%" "-bepath=%path_to_battleye%" -name=%profile_name% -autoinit
 echo To stop the server, close ExileServerStart.bat then the other tasks, otherwise it will restart
-goto started
+goto loopung
 
 :loop
 
@@ -148,7 +194,7 @@ goto started
 cls
 echo Server is already running, running monitoring loop
 
-:started
+:looping
 
 ::Restart/Crash Handler
 set /A crashes+=1
@@ -159,90 +205,10 @@ if "%mission_prefetch%"=="true" (
 )
 if "%ERRORLEVEL%"=="0" goto loop
 cls
-goto start
+goto loop
 pause
 
-:error_server_path
+:error
 cls
-echo ERROR: Server path "path_to_server_executable" not set correctly
-goto end
-
-:error_vars_path
-cls
-echo ERROR: Vars path "path_to_ServervarsArma3Profile" not set correctly
-goto end
-
-:error_server_port
-cls
-echo ERROR: Server port "server_port_number" not set correctly
-goto end
-
-:error_battleye_path
-cls
-echo ERROR: Battleye path "path_to_battleye" not set correctly
-goto end
-
-:error_modlist
-cls
-echo ERROR: Modlist "modlist" not set correctly
-goto end
-
-:error_profile_name
-cls
-echo ERROR: Server profile name "error_profile_name" not set correctly
-goto end
-
-:error_basic_cfg
-cls
-echo ERROR: basic.cfg path "basic_cfg_location" not set correctly
-goto end
-
-:error_server_cfg
-cls
-echo ERROR: server.cfg path "server_cfg_location" not set correctly
-goto end
-
-:error_server_ip
-cls
-echo ERROR: Server ip address "server_ip_address" not set correctly,
-echo if you intend to use the mission prefetch server this has to be set
-goto end
-
-:error_timeout
-cls
-echo ERROR: Wait time "wait_time_in_seconds" not set correctly,
-echo if you intend to use the mission prefetch server this has to be set
-goto end
-
-:error_prefetch_port
-cls
-echo ERROR: Mission prefetch port "mission_prefetch_server_port" not set correctly,
-echo if you intend to use the mission prefetch server this has to be set
-goto end
-
-:error_pbo_path
-cls
-echo ERROR: PBO path "path_to_mission_pbo" not set correctly,
-echo if you intend to use the mission prefetch server this has to be set
-goto end
-
-:error_steamcmd
-cls
-echo ERROR: SteamCMD exeutable path "path_to_steamcmd_executable" not set correctly,
-echo if you intend to use the steam updater this has to be set
-goto end
-
-:error_account_name
-cls
-echo ERROR: Account name "account_name" not set correctly,
-echo if you intend to use the steam updater this has to be set
-goto end
-
-:error_account_password
-cls
-echo ERROR: Account password "account_password" not set correctly,
-echo if you intend to use the steam updater this has to be set
-goto end
-
-:end
+echo ERROR: "%error%" not set correctly
 pause
