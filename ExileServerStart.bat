@@ -19,20 +19,20 @@ SET profile_name=changeme
 :: List of server side mods, for example @Mod1; @Mod2; @Mod3;
 SET modlist=@Mod1; @Mod2; @Mod3;
 :: basic.cfg location
-SET basic_cfg_location=changeme
+SET path_to_basic_cfg=changeme
 :: server.cfg location
-SET server_cfg_location=changeme
+SET path_to_server_cfg=changeme
 
 
 :: If you are using the SQL backup:
 :: Set backup=true
 SET backup=false
 :: Set the directory to the .bat filePatching
-SET sql_backup_directory=changeme
+SET path_to_sql_backup=changeme
 
 :: If you are using a 64bit server, set 64bit_server=true
 SET 64bit_server=false
-
+:: name of executable, this will be changed to arma3server_x64.exe if 64bit_server=true
 SET exe_name=arma3server.exe
 
 :: If you are using the MissionPrefetchServer:
@@ -95,12 +95,12 @@ if "%modlist%" == "@Mod1; @Mod2; @Mod3;" (
 	SET error=modlist
 	goto error
 )
-if "%basic_cfg_location%" == "changeme" (
-	SET error=basic_cfg_location
+if "%path_to_basic_cfg%" == "changeme" (
+	SET error=path_to_basic_cfg
 	goto error
 )
-if "%server_cfg_location%" == "changeme" (
-	SET error=server_cfg_location
+if "%path_to_server_cfg%" == "changeme" (
+	SET error=path_to_server_cfg
 	goto error
 )
 if "%64bit_server%" == "true" (
@@ -152,7 +152,7 @@ echo Delete complete
 ::Uses https://www.redolive.com/utah-web-designers-blog/automated-mysql-backup-for-windows
 if "%backup%" == "true" (
   echo Starting Database Backup
-  start %sql_backup_directory%
+  start %path_to_sql_backup%
   echo Database backup complete
 )
 
@@ -184,7 +184,7 @@ echo Restarts/Crashes: %loops%
 cd %path_to_server_executable%
 ::For more info see: https://community.bistudio.com/wiki/ArmA:_Server_configuration
 ::We used -autoinit -enableHT -loadMissionToMemory -high -filePatching -hugepages -bandwidthAlg=2 however your mileage may vary
-start %profile_name% /min /wait %exe_name% "-mod=%modlist%" "-config=%server_cfg_location%" -port=%server_port_number% "-profiles=%profile_name%" "-cfg=%basic_cfg_location%" "-bepath=%path_to_battleye%" -name=%profile_name% -autoinit
+start %profile_name% /min /wait %exe_name% "-mod=%modlist%" "-config=%path_to_server_cfg%" -port=%server_port_number% "-profiles=%profile_name%" "-cfg=%path_to_basic_cfg%" "-bepath=%path_to_battleye%" -name=%profile_name% -autoinit
 echo To stop the server, close ExileServerStart.bat then the other tasks, otherwise it will restart
 goto looping
 
@@ -199,7 +199,7 @@ echo Server is already running, running monitoring loop
 ::Restart/Crash Handler
 set /A crashes+=1
 C:\Windows\System32\timeout /t 5
-C:\Windows\System32\tasklist /FI "C:\arma eq %exe_name%" 2>NUL | C:\Windows\System32\find /I /N %exe_name%>NUL
+C:\Windows\System32\tasklist /FI "%path_to_server_executable% eq %exe_name%" 2>NUL | C:\Windows\System32\find /I /N %exe_name%>NUL
 if "%mission_prefetch%"=="true" (
   taskkill /F /IM MissionPrefetchServer.exe
 )
