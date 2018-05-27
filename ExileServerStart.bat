@@ -186,7 +186,7 @@ cd %path_to_server_executable%
 ::We used -autoinit -enableHT -loadMissionToMemory -high -filePatching -hugepages -bandwidthAlg=2 however your mileage may vary
 start %profile_name% /min /wait %exe_name% "-mod=%modlist%" "-config=%server_cfg_location%" -port=%server_port_number% "-profiles=%profile_name%" "-cfg=%basic_cfg_location%" "-bepath=%path_to_battleye%" -name=%profile_name% -autoinit
 echo To stop the server, close ExileServerStart.bat then the other tasks, otherwise it will restart
-goto loopung
+goto looping
 
 :loop
 
