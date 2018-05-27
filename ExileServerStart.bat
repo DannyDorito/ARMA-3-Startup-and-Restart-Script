@@ -8,9 +8,21 @@ SET server_name=Exile Server #1
 
 :: Path to the ARMA 3 server executable
 SET path_to_server_executable=changeme
-
 :: Path to server.vars.Arma3Profile, for example C:\arma\CSG\Users\CSG\CSG.vars.Arma3Profile
 SET path_to_ServervarsArma3Profile=changeme
+:: Path to battleye folder, for example C:ARMA\battleye
+SET path_to_battleye=changeme
+:: Set the port number of the ARMA server
+SET server_port_number=0
+:: Name of server profile
+SET profile_name=changeme
+:: List of server side mods, for example @Mod1; @Mod2; @Mod3;
+SET modlist=@Mod1; @Mod2; @Mod3;
+:: basic.cfg location
+SET basic_cfg_location=changeme
+:: server.cfg location
+SET server_cfg_location=changeme
+
 
 :: If you are using the SQL backup:
 :: Set backup=true
@@ -28,8 +40,6 @@ SET exe_name=arma3server.exe
 SET mission_prefetch=false
 :: Set the path to the MissionPrefetchServer executable
 SET path_to_mission_prefetch_server_executable=changeme
-:: Set the port number of the ARMA server
-SET server_port_number=0
 :: Set the IP address of the MissionPrefetchServer
 SET server_ip_address=0.0.0.0
 :: Set the wait time of the MissionPrefetchServer
@@ -62,12 +72,17 @@ title %server_name%
 
 if "%path_to_server_executable%" == "changeme" goto error_server_path
 if "%path_to_ServervarsArma3Profile%" == "changeme" goto error_vars_path
+if "%server_port_number%" == "0" goto error_server_port
+if "%profile_name%" == "changeme" goto error_profile_name
+if "%path_to_battleye%" == "changeme" goto error_battleye_path
+if "%modlist%" == "@Mod1; @Mod2; @Mod3;" goto error_modlist
+if "%basic_cfg_location%" == "changeme" goto error_basic_cfg
+if "%server_cfg_location%" == "changeme" goto error_server_cfg
 if "%64bit_server%" == "true" (
   SET exe_name=arma3server_x64.exe
 )
 
 if "%mission_prefetch%" == "true" (
-  if "%server_port_number%" == "0" goto error_server_port
   if "%server_ip_address%" == "0.0.0.0" goto error_server_ip
   if "%wait_time_in_seconds%" == "0" goto error_timeout
   if "%mission_prefetch_server_port%" == "0" goto error_prefetch_port
@@ -120,10 +135,10 @@ echo Starting server at: %date%,%time%
 echo Restarts/Crashes: %loops%
 
 ::Start the Arma Server
-cd "C:\arma"
+cd %path_to_server_executable%
 ::For more info see: https://community.bistudio.com/wiki/ArmA:_Server_configuration
 ::We used -autoinit -enableHT -loadMissionToMemory -high -filePatching -hugepages -bandwidthAlg=2 however your mileage may vary
-start "CSG" /min /wait arma3server.exe "-mod=@Mod1; @mod;" "-config=C:\arma\config.cfg" -port=SERVER.PORT "-profiles=PROFILE.NAME" "-cfg=PATH.TO.CFG.FILE" "-bepath=PATH.TO.BATTLEEYE" -name=PROFILE.NAME -autoinit
+start %profile_name% /min /wait %exe_name% "-mod=%modlist%" "-config=%server_cfg_location%" -port=%server_port_number% "-profiles=%profile_name%" "-cfg=%basic_cfg_location%" "-bepath=%path_to_battleye%" -name=%profile_name% -autoinit
 echo To stop the server, close ExileServerStart.bat then the other tasks, otherwise it will restart
 goto started
 
@@ -159,8 +174,32 @@ goto end
 
 :error_server_port
 cls
-echo ERROR: Server port "server_port_number" not set correctly,
-echo if you intend to use the mission prefetch server this has to be set
+echo ERROR: Server port "server_port_number" not set correctly
+goto end
+
+:error_battleye_path
+cls
+echo ERROR: Battleye path "path_to_battleye" not set correctly
+goto end
+
+:error_modlist
+cls
+echo ERROR: Modlist "modlist" not set correctly
+goto end
+
+:error_profile_name
+cls
+echo ERROR: Server profile name "error_profile_name" not set correctly
+goto end
+
+:error_basic_cfg
+cls
+echo ERROR: basic.cfg path "basic_cfg_location" not set correctly
+goto end
+
+:error_server_cfg
+cls
+echo ERROR: server.cfg path "server_cfg_location" not set correctly
 goto end
 
 :error_server_ip
