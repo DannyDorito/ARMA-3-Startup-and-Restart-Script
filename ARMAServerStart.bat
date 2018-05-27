@@ -4,7 +4,7 @@
 ::
 
 :: Command window name, does not affect anything else
-SET server_name=Exile Server #1
+SET server_name=Server #1
 
 :: Path to the ARMA 3 server executable
 SET path_to_server_executable=changeme
