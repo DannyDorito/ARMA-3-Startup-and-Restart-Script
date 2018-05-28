@@ -8,6 +8,8 @@ SET server_name=Server #1
 
 :: Path to the ARMA 3 server executable
 SET path_to_server_executable=changeme
+:: name of executable
+SET exe_name=arma3server.exe
 :: Path to server.vars.Arma3Profile, for example C:\arma\CSG\Users\CSG\CSG.vars.Arma3Profile
 SET path_to_ServervarsArma3Profile=changeme
 :: Path to battleye folder, for example C:ARMA\battleye
@@ -33,10 +35,6 @@ SET backup=false
 :: Set the directory to the .bat filePatching
 SET path_to_sql_backup=changeme
 
-:: If you are using a 64bit server, set 64bit_server=true
-SET 64bit_server=false
-:: name of executable, this will be changed to arma3server_x64.exe if 64bit_server=true
-SET exe_name=arma3server.exe
 
 :: If you are using the MissionPrefetchServer:
 :: Set mission_prefetch=true
@@ -103,9 +101,6 @@ if "%path_to_basic_cfg%" == "changeme" (
 if "%path_to_server_cfg%" == "changeme" (
 	SET error=path_to_server_cfg
 	goto error
-)
-if "%64bit_server%" == "true" (
-	SET exe_name=arma3server_x64.exe
 )
 
 if "%mission_prefetch%" == "true" (
