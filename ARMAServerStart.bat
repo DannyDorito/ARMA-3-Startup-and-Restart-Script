@@ -162,7 +162,7 @@ if "%backup%" == "true" (
 ::Remove :: from the lines below to use, also remove from Restart/Crash Hander section
 if "%mission_prefetch%" == "true" (
 	echo Starting MissionPrefetchServer
-	start %path_to_mission_prefetch_server_executable% %server_port_number% %path_to_mission_pbo% %server_ip_address% %mission_prefetch_server_port% %wait_time_in_seconds%
+	start /wait %path_to_mission_prefetch_server_executable% %server_port_number% %path_to_mission_pbo% %server_ip_address% %mission_prefetch_server_port% %wait_time_in_seconds%
 	echo MissionPrefetchServer Started
 )
 
