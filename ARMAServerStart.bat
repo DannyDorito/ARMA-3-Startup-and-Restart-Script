@@ -110,35 +110,35 @@ if "%64bit_server%" == "true" (
 
 if "%mission_prefetch%" == "true" (
   if "%server_ip_address%" == "0.0.0.0" (
-	SET error=server_ip_address
-	goto error
+		SET error=server_ip_address
+		goto error
 	)
   if "%wait_time_in_seconds%" == "0" (
-	SET error=wait_time_in_seconds
-	goto error
+		SET error=wait_time_in_seconds
+		goto error
 	)
   if "%mission_prefetch_server_port%" == "0" (
-	SET error=mission_prefetch_server_port
-	goto error
+		SET error=mission_prefetch_server_port
+		goto error
 	)
-  if "%path_to_mission_pbo%" == "changeme" (
-	SET error=path_to_server_executable
-	goto error
+	if "%path_to_mission_pbo%" == "changeme" (
+		SET error=path_to_server_executable
+		goto error
 	)
 )
 
 if "%use_steam_updater%" == "true" (
-	if "%path_to_steamcmd_executable%" == "changeme" (
-	SET error=path_to_steamcmd_executable
-	goto error
+		if "%path_to_steamcmd_executable%" == "changeme" (
+		SET error=path_to_steamcmd_executable
+		goto error
 	)
 	if "%account_name%" == "changeme" (
-	SET error=account_name
-	goto error
+		SET error=account_name
+		goto error
 	)
 	if "%account_password%" == "changeme" (
-	SET error=account_password
-	goto error
+		SET error=account_password
+		goto error
 	)
 )
 
