@@ -61,8 +61,6 @@ SET path_to_steamcmd_executable=changeme
 SET account_name=changeme
 :: Set the above Steam account password
 SET account_password=changeme
-:: Set the wait time of the update service in seconds, default is 40 seconds
-SET updater_wait_time=40
 ::
 ::  DO NOT CHANGE ANYTHING BELOW THIS POINT
 ::
@@ -155,7 +153,7 @@ echo Delete complete
 ::Uses https://www.redolive.com/utah-web-designers-blog/automated-mysql-backup-for-windows
 if "%backup%" == "true" (
 	echo Starting Database Backup
-	start %path_to_sql_backup%
+	start /wait %path_to_sql_backup%
 	echo Database backup complete
 )
 
@@ -172,8 +170,7 @@ if "%mission_prefetch%" == "true" (
 ::Get from here https://developer.valvesoftware.com/wiki/SteamCMD
 if "%use_steam_updater%" == "true" (
 	echo Steam Automatic Update Starting
-	start %path_to_steamcmd_executable% +login %account_name% %account_password% +force_install_dir c:\arma\ +app_update 233780 validate +quit
-	TIMEOUT /T %updater_wait_time%
+	start /wait %path_to_steamcmd_executable% +login %account_name% %account_password% +force_install_dir c:\arma\ +app_update 233780 validate +quit
 	echo Steam Automatic Update Completed
 )
 
