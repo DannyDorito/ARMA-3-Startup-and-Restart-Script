@@ -24,6 +24,8 @@ SET modlist=@Mod1; @Mod2; @Mod3;
 SET path_to_basic_cfg=changeme
 :: server.cfg location
 SET path_to_server_cfg=changeme
+:: Path to the ARMA directory, for example C:ARMA\
+SET path_to_arma_directory=changeme
 :: Extra launch parameters
 :: For more info see: https://community.bistudio.com/wiki/ArmA:_Server_configuration
 :: We used -autoinit -enableHT -loadMissionToMemory -high -filePatching -hugepages -bandwidthAlg=2 however your mileage may vary
@@ -102,6 +104,10 @@ if "%path_to_server_cfg%" == "changeme" (
 	SET error=path_to_server_cfg
 	goto error
 )
+if "%path_to_arma_directory%" == "changeme" (
+	SET error=path_to_arma_directory
+	goto error
+)
 
 if "%mission_prefetch%" == "true" (
   if "%server_ip_address%" == "0.0.0.0" (
@@ -165,7 +171,7 @@ if "%mission_prefetch%" == "true" (
 ::Get from here https://developer.valvesoftware.com/wiki/SteamCMD
 if "%use_steam_updater%" == "true" (
 	echo Steam Automatic Update Starting
-	start /wait %path_to_steamcmd_executable% +login %account_name% %account_password% +force_install_dir c:\arma\ +app_update 233780 validate +quit
+	start /wait %path_to_steamcmd_executable% +login %account_name% %account_password% +force_install_dir %path_to_arma_directory% +app_update 233780 validate +quit
 	echo Steam Automatic Update Completed
 )
 
