@@ -36,6 +36,10 @@ set extra_launch_parameters=""
 :: set the path to server.vars.Arma3Profile, for example C:\arma\CSG\Users\CSG\CSG.vars.Arma3Profile
 set path_to_ServervarsArma3Profile=changeme
 
+:: Memory allocator, default is tbb4malloc_bi
+:: For more info see: https://community.bistudio.com/wiki/Arma_3:_Custom_Memory_Allocator
+set malloc_name=tbb4malloc_bi
+
 :: If you are using the SQL backup:
 :: set backup=true
 set backup=false
@@ -187,10 +191,10 @@ echo Restarts/Crashes: %loops%
 :: Start the Arma Server
 cd %path_to_server_executable%
 if "%battleye%" == "true" (
-	start %profile_name% /min /wait %exe_name% "-mod=%modlist%" "-config=%path_to_server_cfg%" -port=%server_port_number% "-profiles=%profile_name%" "-cfg=%path_to_basic_cfg%" "-bepath=%path_to_battleye%" -name=%profile_name% %extra_launch_parameters%
+	start %profile_name% /min /wait %exe_name% "-mod=%modlist%" "-config=%path_to_server_cfg%" -port=%server_port_number% "-profiles=%profile_name%" "-cfg=%path_to_basic_cfg%" "-bepath=%path_to_battleye%" -name=%profile_name% -high -malloc=%malloc_name% %extra_launch_parameters%
 )
 if "%battleye%" == "false" (
-	start %profile_name% /min /wait %exe_name% "-mod=%modlist%" "-config=%path_to_server_cfg%" -port=%server_port_number% "-profiles=%profile_name%" "-cfg=%path_to_basic_cfg%" -name=%profile_name% %extra_launch_parameters%
+	start %profile_name% /min /wait %exe_name% "-mod=%modlist%" "-config=%path_to_server_cfg%" -port=%server_port_number% "-profiles=%profile_name%" "-cfg=%path_to_basic_cfg%" -name=%profile_name% -high -malloc=%malloc_name% %extra_launch_parameters%
 )
 echo To stop the server, close ARMAServerStart.bat then the other tasks, otherwise it will restart
 echo.
