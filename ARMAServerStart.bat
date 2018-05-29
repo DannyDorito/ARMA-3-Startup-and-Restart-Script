@@ -51,8 +51,8 @@ set path_to_sql_backup=changeme
 set mission_prefetch=false
 :: set the path to the MissionPrefetchServer executable
 set path_to_mission_prefetch_server_executable=changeme
-:: set the IP address of the MissionPrefetchServer
-set server_ip_address=0.0.0.0
+:: set the IP address of the MissionPrefetchServer, uses GetIP.exe
+for /f %%a in ('GetIP.exe') do set "server_ip_address=%%a"
 :: set the wait time of the MissionPrefetchServer
 set wait_time_in_seconds=0
 :: set the port of the MissionPrefetchServer (different to the ARMA server)
