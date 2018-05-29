@@ -7,11 +7,6 @@ This is .bat file for **all** your ARMA 3 Exile Server startup needs!
 
 Created by: **Jstrow** and **DannyDorito** originally for [CSG Exile](https://www.csgcommunity.com)
 
-## Check out our Twitter!
-[@DannyDorito_](https://twitter.com/DannyDorito_)
-
-[@CSG_Exile](https://twitter.com/CSG_Exile)
-
 ## Features:
 * Server startup - parameters, mods, optional arguments for potential performance increase
 * Crash/Restart monitor - this uses the Windows Task Manager and not local address pinging
@@ -89,3 +84,8 @@ Google Drive sync can be used to automatically upload the files to a external cl
 
 ### Will you add x feature, why is x broken?
 Create a new issue or send Danny Dorito a message on Twitter and we can see what we can do!
+
+## Check out our Twitter!
+[@DannyDorito_](https://twitter.com/DannyDorito_)
+
+[@CSG_Exile](https://twitter.com/CSG_Exile)
