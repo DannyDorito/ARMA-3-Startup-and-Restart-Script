@@ -18,7 +18,8 @@ set battleye=true
 set server_port_number=0
 :: Name of server profile
 set profile_name=changeme
-:: List of server side mods, for example @Mod1; @Mod2; @Mod3;
+:: List of server side mods, Add the mod to modlist for example adding Mod3 to set modlist=@Mod1; @Mod2;
+:: You would do: set modlist=@Mod1; @Mod2; @Mod3;
 set modlist=@Mod1; @Mod2; @Mod3;
 :: basic.cfg location
 set path_to_basic_cfg=changeme
