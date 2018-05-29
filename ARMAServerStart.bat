@@ -10,8 +10,6 @@ SET server_name=Server #1
 SET path_to_server_executable=changeme
 :: name of executable
 SET exe_name=arma3server.exe
-:: Path to server.vars.Arma3Profile, for example C:\arma\CSG\Users\CSG\CSG.vars.Arma3Profile
-SET path_to_ServervarsArma3Profile=changeme
 :: Path to battleye folder, for example C:ARMA\battleye
 SET path_to_battleye=changeme
 :: If you are not using battleye then battleye=false
@@ -32,6 +30,10 @@ SET path_to_arma_directory=changeme
 :: For more info see: https://community.bistudio.com/wiki/ArmA:_Server_configuration
 :: We used -autoinit -enableHT -loadMissionToMemory -high -filePatching -hugepages -bandwidthAlg=2 however your mileage may vary
 SET extra_launch_parameters=""
+
+:: If you want to use the profile deleter for possible performance increase
+:: set the path to server.vars.Arma3Profile, for example C:\arma\CSG\Users\CSG\CSG.vars.Arma3Profile
+SET path_to_ServervarsArma3Profile=changeme
 
 :: If you are using the SQL backup:
 :: Set backup=true
@@ -75,10 +77,6 @@ title %server_name%
 
 if "%path_to_server_executable%" == "changeme" (
 	SET error=path_to_server_executable
-	goto error
-)
-if "%path_to_ServervarsArma3Profile%" == "changeme" (
-	SET error=path_to_ServervarsArma3Profile
 	goto error
 )
 if "%server_port_number%" == "0" (
@@ -150,9 +148,11 @@ if "%use_steam_updater%" == "true" (
 C:\Windows\System32\tasklist /FI %path_to_server_executable% 2>NUL | C:\Windows\System32\find /I /N %exe_name%>NUL
 if "%ERRORLEVEL%" == "0" goto loop
 
-echo Deleting %profile_name%
-del /Q /F %path_to_ServervarsArma3Profile%
-echo Delete complete
+if "%path_to_ServervarsArma3Profile%" != "changeme" (
+	echo Deleting %profile_name%
+	del /Q /F %path_to_ServervarsArma3Profile%
+	echo Delete complete
+}
 
 :: Uses https://www.redolive.com/utah-web-designers-blog/automated-mysql-backup-for-windows
 if "%backup%" == "true" (
