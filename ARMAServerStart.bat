@@ -14,7 +14,7 @@ SET exe_name=arma3server.exe
 SET path_to_ServervarsArma3Profile=changeme
 :: Path to battleye folder, for example C:ARMA\battleye
 SET path_to_battleye=changeme
-:: Set the port number of the ARMA server
+:: Set the port number of the ARMA server, default is 2302
 SET server_port_number=0
 :: Name of server profile
 SET profile_name=changeme
@@ -36,7 +36,6 @@ SET extra_launch_parameters=""
 SET backup=false
 :: Set the directory to the .bat filePatching
 SET path_to_sql_backup=changeme
-
 
 :: If you are using the MissionPrefetchServer:
 :: Set mission_prefetch=true
@@ -64,12 +63,12 @@ SET account_password=changeme
 ::
 ::  DO NOT CHANGE ANYTHING BELOW THIS POINT
 ::
+
 @echo off
 SET error=""
 SET loops=0
 
 echo Pre startup initialised
-echo .
 title %server_name%
 
 if "%path_to_server_executable%" == "changeme" (
@@ -151,24 +150,23 @@ echo Deleting %profile_name%
 del /Q /F %path_to_ServervarsArma3Profile%
 echo Delete complete
 
-::Uses https://www.redolive.com/utah-web-designers-blog/automated-mysql-backup-for-windows
+:: Uses https://www.redolive.com/utah-web-designers-blog/automated-mysql-backup-for-windows
 if "%backup%" == "true" (
 	echo Starting Database Backup
 	start /wait %path_to_sql_backup%
 	echo Database backup complete
 )
 
-::Get from here https://a3.launcher.eu/download
-::If you use the optional Arma 3 Launcher Mission Prefetch
-::Remove :: from the lines below to use, also remove from Restart/Crash Hander section
+:: Get from here https://a3.launcher.eu/download
+:: If you use the optional Arma 3 Launcher Mission Prefetch
 if "%mission_prefetch%" == "true" (
 	echo Starting MissionPrefetchServer
 	start /wait %path_to_mission_prefetch_server_executable% %server_port_number% %path_to_mission_pbo% %server_ip_address% %mission_prefetch_server_port% %wait_time_in_seconds%
 	echo MissionPrefetchServer Started
 )
 
-::Steam automatic update for the server files
-::Get from here https://developer.valvesoftware.com/wiki/SteamCMD
+:: Steam automatic update for the server files
+:: Get from here https://developer.valvesoftware.com/wiki/SteamCMD
 if "%use_steam_updater%" == "true" (
 	echo Steam Automatic Update Starting
 	start /wait %path_to_steamcmd_executable% +login %account_name% %account_password% +force_install_dir %path_to_arma_directory% +app_update 233780 validate +quit
@@ -181,19 +179,19 @@ echo.
 echo Starting server at: %date%,%time%
 echo Restarts/Crashes: %loops%
 
-::Start the Arma Server
+:: Start the Arma Server
 cd %path_to_server_executable%
 start %profile_name% /min /wait %exe_name% "-mod=%modlist%" "-config=%path_to_server_cfg%" -port=%server_port_number% "-profiles=%profile_name%" "-cfg=%path_to_basic_cfg%" "-bepath=%path_to_battleye%" -name=%profile_name% -autoinit %extra_launch_parameters%
 echo To stop the server, close ExileServerStart.bat then the other tasks, otherwise it will restart
 goto looping
 
 :loop
-::Monitoring Loop
+:: Monitoring Loop
 cls
 echo Server is already running, running monitoring loop
 
 :looping
-::Restart/Crash Handler
+:: Restart/Crash Handler
 set /A crashes+=1
 C:\Windows\System32\timeout /t 5
 C:\Windows\System32\tasklist /FI "%path_to_server_executable% eq %exe_name%" 2>NUL | C:\Windows\System32\find /I /N %exe_name%>NUL
