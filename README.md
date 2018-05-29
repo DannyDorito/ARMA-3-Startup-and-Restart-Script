@@ -11,8 +11,8 @@ Created by: **Jstrow** and **DannyDorito** originally for [CSG Exile](https://ww
 * Server startup - parameters, mods, optional arguments for potential performance increase
 * Crash/Restart monitor - this uses the Windows Task Manager and not local address pinging
 * The last start date and time of the server
-* Profile.vars.Arma3Profile deleter, potential performance increase
 * Support for 64bit servers
+* Optional Profile.vars.Arma3Profile deleter, potential performance increase
 * Optional Database backup script
 * Optional ARMA 3 Launcher Mission Prefetch from - Allows clients to download server file from A3Launcher
 * Optional Steam Automatic updater for ARMA 3
@@ -34,14 +34,14 @@ Created by: **Jstrow** and **DannyDorito** originally for [CSG Exile](https://ww
 6. To shutdown the server close the console window first (and all other windows e.g BattleEye or MissionPrefetchServer), **then** shutdown the server.
 
 ### How do I add x mod?
-If it is a **server** mod, then add it to your mod folder and goto the 'Start the ARMA Server' section in ExileServerStart.bat
+If it is a **server side** mod, then add it to your mod folder and goto the 'Start the ARMA Server' section in ARMAServerStart.bat
 
 **Please check the mod page before installing all mods!**
 
-Add the mod to your mod parameter for example adding ``Mod3`` to ``"-mod=@Mod1; @Mod2;"``
+Add the mod to ``modlist`` for example adding ``Mod3`` to ``SET modlist=@Mod1; @Mod2;``
 
 You would do:
-``"-mod=@Mod1; @Mod2; @Mod3;"``
+``SET modlist=@Mod1; @Mod2; @Mod3;``
 
 If it is a client mod (e.g. JSRS or Blastcore) then there is **no need to add it to startup!** Usually just the .bikey into your BIKey folder.
 
