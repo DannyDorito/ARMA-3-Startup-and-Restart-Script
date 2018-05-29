@@ -14,6 +14,8 @@ SET exe_name=arma3server.exe
 SET path_to_ServervarsArma3Profile=changeme
 :: Path to battleye folder, for example C:ARMA\battleye
 SET path_to_battleye=changeme
+:: If you are not using battleye then battleye=false
+SET battleye=true
 :: Set the port number of the ARMA server, default is 2302
 SET server_port_number=0
 :: Name of server profile
@@ -87,9 +89,11 @@ if "%profile_name%" == "changeme" (
 	SET error=profile_name
 	goto error
 )
-if "%path_to_battleye%" == "changeme" (
+if "%battleye%" == "true" (
+	if "%path_to_battleye%" == "changeme" (
 	SET error=path_to_battleye
 	goto error
+	)
 )
 if "%modlist%" == "@Mod1; @Mod2; @Mod3;" (
 	SET error=modlist
@@ -181,13 +185,17 @@ echo Restarts/Crashes: %loops%
 
 :: Start the Arma Server
 cd %path_to_server_executable%
-start %profile_name% /min /wait %exe_name% "-mod=%modlist%" "-config=%path_to_server_cfg%" -port=%server_port_number% "-profiles=%profile_name%" "-cfg=%path_to_basic_cfg%" "-bepath=%path_to_battleye%" -name=%profile_name% -autoinit %extra_launch_parameters%
+if "%battleye%" == "true" (
+	start %profile_name% /min /wait %exe_name% "-mod=%modlist%" "-config=%path_to_server_cfg%" -port=%server_port_number% "-profiles=%profile_name%" "-cfg=%path_to_basic_cfg%" "-bepath=%path_to_battleye%" -name=%profile_name% -autoinit %extra_launch_parameters%
+)
+if "%battleye%" == "false" (
+	start %profile_name% /min /wait %exe_name% "-mod=%modlist%" "-config=%path_to_server_cfg%" -port=%server_port_number% "-profiles=%profile_name%" "-cfg=%path_to_basic_cfg%" -name=%profile_name% -autoinit %extra_launch_parameters%
+)
 echo To stop the server, close ExileServerStart.bat then the other tasks, otherwise it will restart
 goto looping
 
 :loop
 :: Monitoring Loop
-cls
 echo Server is already running, running monitoring loop
 
 :looping
@@ -199,11 +207,10 @@ if "%mission_prefetch%"=="true" (
 	taskkill /F /IM MissionPrefetchServer.exe
 )
 if "%ERRORLEVEL%"=="0" goto loop
-cls
 goto loop
-pause
 
 :error
 cls
+COLOR C
 echo ERROR: "%error%" not set correctly
 pause
