@@ -1,153 +1,153 @@
 ::
-::  ExileServerStart.bat
-::  By: Jstrow and Danny Dorito originally for CSG Exile
+:: ARMAServerStart.bat
+:: By: Jstrow and Danny Dorito, originally for CSG Exile
 ::
 
 :: Command window name, does not affect anything else
-SET server_name=Server #1
+set server_name=ARMA Server #1
 
 :: Path to the ARMA 3 server executable
-SET path_to_server_executable=changeme
+set path_to_server_executable=changeme
 :: name of executable
-SET exe_name=arma3server.exe
+set exe_name=arma3server.exe
 :: Path to battleye folder, for example C:ARMA\battleye
-SET path_to_battleye=changeme
+set path_to_battleye=changeme
 :: If you are not using battleye then battleye=false
-SET battleye=true
-:: Set the port number of the ARMA server, default is 2302
-SET server_port_number=0
+set battleye=true
+:: set the port number of the ARMA server, default is 2302
+set server_port_number=0
 :: Name of server profile
-SET profile_name=changeme
+set profile_name=changeme
 :: List of server side mods, for example @Mod1; @Mod2; @Mod3;
-SET modlist=@Mod1; @Mod2; @Mod3;
+set modlist=@Mod1; @Mod2; @Mod3;
 :: basic.cfg location
-SET path_to_basic_cfg=changeme
+set path_to_basic_cfg=changeme
 :: server.cfg location
-SET path_to_server_cfg=changeme
+set path_to_server_cfg=changeme
 :: Path to the ARMA directory, for example C:ARMA\
-SET path_to_arma_directory=changeme
+set path_to_arma_directory=changeme
 :: Extra launch parameters
 :: For more info see: https://community.bistudio.com/wiki/ArmA:_Server_configuration
-:: We used -autoinit -enableHT -loadMissionToMemory -high -filePatching -hugepages -bandwidthAlg=2 however your mileage may vary
-SET extra_launch_parameters=""
+:: We used -autoinit -enableHT -loadMissionToMemory -high -filePatching -hugepages -bandwidthAlg=2, however your mileage may vary
+set extra_launch_parameters=""
 
 :: If you want to use the profile deleter for possible performance increase
 :: set the path to server.vars.Arma3Profile, for example C:\arma\CSG\Users\CSG\CSG.vars.Arma3Profile
-SET path_to_ServervarsArma3Profile=changeme
+set path_to_ServervarsArma3Profile=changeme
 
 :: If you are using the SQL backup:
-:: Set backup=true
-SET backup=false
-:: Set the directory to the .bat filePatching
-SET path_to_sql_backup=changeme
+:: set backup=true
+set backup=false
+:: set the directory to the .bat filePatching
+set path_to_sql_backup=changeme
 
 :: If you are using the MissionPrefetchServer:
-:: Set mission_prefetch=true
-SET mission_prefetch=false
-:: Set the path to the MissionPrefetchServer executable
-SET path_to_mission_prefetch_server_executable=changeme
-:: Set the IP address of the MissionPrefetchServer
-SET server_ip_address=0.0.0.0
-:: Set the wait time of the MissionPrefetchServer
-SET wait_time_in_seconds=0
-:: Set the port of the MissionPrefetchServer (different to the ARMA server)
-SET mission_prefetch_server_port=0
-:: Set the path of the mission pbo that you wish to use the MissionPrefetchServer with
-SET path_to_mission_pbo=changeme
+:: set mission_prefetch=true
+set mission_prefetch=false
+:: set the path to the MissionPrefetchServer executable
+set path_to_mission_prefetch_server_executable=changeme
+:: set the IP address of the MissionPrefetchServer
+set server_ip_address=0.0.0.0
+:: set the wait time of the MissionPrefetchServer
+set wait_time_in_seconds=0
+:: set the port of the MissionPrefetchServer (different to the ARMA server)
+set mission_prefetch_server_port=0
+:: set the path of the mission pbo that you wish to use the MissionPrefetchServer with
+set path_to_mission_pbo=changeme
 
 :: If you are using the SteamCMD updater:
-:: Set use_steam_updater=true
-SET use_steam_updater=false
-:: Set the path to the SteamCMD executable
-SET path_to_steamcmd_executable=changeme
-:: Set the Steam account name that you want to use to update the server
-SET account_name=changeme
-:: Set the above Steam account password
-SET account_password=changeme
+:: set use_steam_updater=true
+set use_steam_updater=false
+:: set the path to the SteamCMD executable
+set path_to_steamcmd_executable=changeme
+:: set the Steam account name that you want to use to update the server
+set account_name=changeme
+:: set the above Steam account password
+set account_password=changeme
 ::
-::  DO NOT CHANGE ANYTHING BELOW THIS POINT
+:: DO NOT CHANGE ANYTHING BELOW THIS POINT
 ::
-
 @echo off
-SET error=""
-SET loops=0
+set error=""
+set loops=0
 
 echo Pre startup initialised
+echo Starting vars checks
 title %server_name%
 
 if "%path_to_server_executable%" == "changeme" (
-	SET error=path_to_server_executable
+	set error=path_to_server_executable
 	goto error
 )
 if "%server_port_number%" == "0" (
-	SET error=server_port_number
+	set error=server_port_number
 	goto error
 )
 if "%profile_name%" == "changeme" (
-	SET error=profile_name
+	set error=profile_name
 	goto error
 )
 if "%battleye%" == "true" (
 	if "%path_to_battleye%" == "changeme" (
-	SET error=path_to_battleye
+	set error=path_to_battleye
 	goto error
 	)
 )
 if "%modlist%" == "@Mod1; @Mod2; @Mod3;" (
-	SET error=modlist
+	set error=modlist
 	goto error
 )
 if "%path_to_basic_cfg%" == "changeme" (
-	SET error=path_to_basic_cfg
+	set error=path_to_basic_cfg
 	goto error
 )
 if "%path_to_server_cfg%" == "changeme" (
-	SET error=path_to_server_cfg
+	set error=path_to_server_cfg
 	goto error
 )
 if "%path_to_arma_directory%" == "changeme" (
-	SET error=path_to_arma_directory
+	set error=path_to_arma_directory
 	goto error
 )
 
 if "%mission_prefetch%" == "true" (
-  if "%server_ip_address%" == "0.0.0.0" (
-		SET error=server_ip_address
+	if "%server_ip_address%" == "0.0.0.0" (
+		set error=server_ip_address
 		goto error
 	)
-  if "%wait_time_in_seconds%" == "0" (
-		SET error=wait_time_in_seconds
+	if "%wait_time_in_seconds%" == "0" (
+		set error=wait_time_in_seconds
 		goto error
 	)
-  if "%mission_prefetch_server_port%" == "0" (
-		SET error=mission_prefetch_server_port
+	if "%mission_prefetch_server_port%" == "0" (
+		set error=mission_prefetch_server_port
 		goto error
 	)
 	if "%path_to_mission_pbo%" == "changeme" (
-		SET error=path_to_server_executable
+		set error=path_to_server_executable
 		goto error
 	)
 )
 
 if "%use_steam_updater%" == "true" (
 		if "%path_to_steamcmd_executable%" == "changeme" (
-		SET error=path_to_steamcmd_executable
+		set error=path_to_steamcmd_executable
 		goto error
 	)
 	if "%account_name%" == "changeme" (
-		SET error=account_name
+		set error=account_name
 		goto error
 	)
 	if "%account_password%" == "changeme" (
-		SET error=account_password
+		set error=account_password
 		goto error
 	)
 )
+echo Vars checks completed
 
 :loop
 C:\Windows\System32\tasklist /FI %path_to_server_executable% 2>NUL | C:\Windows\System32\find /I /N %exe_name%>NUL
 if "%ERRORLEVEL%" == "0" goto loop
-
 if "%path_to_ServervarsArma3Profile%" != "changeme" (
 	echo Deleting %profile_name%
 	del /Q /F %path_to_ServervarsArma3Profile%
@@ -186,12 +186,13 @@ echo Restarts/Crashes: %loops%
 :: Start the Arma Server
 cd %path_to_server_executable%
 if "%battleye%" == "true" (
-	start %profile_name% /min /wait %exe_name% "-mod=%modlist%" "-config=%path_to_server_cfg%" -port=%server_port_number% "-profiles=%profile_name%" "-cfg=%path_to_basic_cfg%" "-bepath=%path_to_battleye%" -name=%profile_name% -autoinit %extra_launch_parameters%
+	start %profile_name% /min /wait %exe_name% "-mod=%modlist%" "-config=%path_to_server_cfg%" -port=%server_port_number% "-profiles=%profile_name%" "-cfg=%path_to_basic_cfg%" "-bepath=%path_to_battleye%" -name=%profile_name% %extra_launch_parameters%
 )
 if "%battleye%" == "false" (
-	start %profile_name% /min /wait %exe_name% "-mod=%modlist%" "-config=%path_to_server_cfg%" -port=%server_port_number% "-profiles=%profile_name%" "-cfg=%path_to_basic_cfg%" -name=%profile_name% -autoinit %extra_launch_parameters%
+	start %profile_name% /min /wait %exe_name% "-mod=%modlist%" "-config=%path_to_server_cfg%" -port=%server_port_number% "-profiles=%profile_name%" "-cfg=%path_to_basic_cfg%" -name=%profile_name% %extra_launch_parameters%
 )
-echo To stop the server, close ExileServerStart.bat then the other tasks, otherwise it will restart
+echo To stop the server, close ARMAServerStart.bat then the other tasks, otherwise it will restart
+echo.
 goto looping
 
 :loop
@@ -210,6 +211,7 @@ if "%ERRORLEVEL%"=="0" goto loop
 goto loop
 
 :error
+:: Generic error catching
 cls
 COLOR C
 echo ERROR: "%error%" not set correctly
