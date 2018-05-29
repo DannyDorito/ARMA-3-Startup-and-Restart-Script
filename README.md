@@ -1,4 +1,4 @@
-# ARMA 3 (Exile) Startup Script
+# ARMA 3 (Exile) Startup & Restart Script
 Originally created for the Exile Mod, but can be used for any ARMA 3 Server
 
 We all would **love** to see more Exile Mod servers, so why not create one?
