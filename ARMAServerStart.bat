@@ -191,10 +191,10 @@ echo Restarts/Crashes: %loops%
 :: Start the Arma Server
 cd %path_to_server_executable%
 if "%battleye%" == "true" (
-	start %profile_name% /min /wait %exe_name% "-mod=%modlist%" "-config=%path_to_server_cfg%" -port=%server_port_number% "-profiles=%profile_name%" "-cfg=%path_to_basic_cfg%" "-bepath=%path_to_battleye%" -name=%profile_name% -high -autoInit -malloc=%malloc_name% %extra_launch_parameters%
+	start "%profile_name%" /min /wait %exe_name% "-mod=%modlist%" "-config=%path_to_server_cfg%" -port=%server_port_number% "-profiles=%profile_name%" "-cfg=%path_to_basic_cfg%" "-bepath=%path_to_battleye%" -name=%profile_name% -high -autoInit -malloc=%malloc_name% %extra_launch_parameters%
 )
 if "%battleye%" == "false" (
-	start %profile_name% /min /wait %exe_name% "-mod=%modlist%" "-config=%path_to_server_cfg%" -port=%server_port_number% "-profiles=%profile_name%" "-cfg=%path_to_basic_cfg%" -name=%profile_name% -high -autoInit -malloc=%malloc_name% %extra_launch_parameters%
+	start "%profile_name%" /min /wait %exe_name% "-mod=%modlist%" "-config=%path_to_server_cfg%" -port=%server_port_number% "-profiles=%profile_name%" "-cfg=%path_to_basic_cfg%" -name=%profile_name% -high -autoInit -malloc=%malloc_name% %extra_launch_parameters%
 )
 echo To stop the server, close ARMAServerStart.bat then the other tasks, otherwise it will restart
 echo.
