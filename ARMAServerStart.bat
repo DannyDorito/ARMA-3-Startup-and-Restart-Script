@@ -2,7 +2,7 @@
 :: ARMAServerStart.bat
 :: By: Jstrow and Danny Dorito, originally for CSG Exile
 ::
-
+@echo off
 :: Command window name, does not affect anything else
 set server_name=ARMA Server #1
 
@@ -78,7 +78,6 @@ set account_password=changeme
 ::
 :: DO NOT CHANGE ANYTHING BELOW THIS POINT
 ::
-@echo off
 set error=""
 set loops=0
 
