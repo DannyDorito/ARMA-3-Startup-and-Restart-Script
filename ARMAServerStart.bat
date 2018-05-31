@@ -6,7 +6,7 @@
 :: Command window name, does not affect anything else
 set server_name=ARMA Server #1
 
-:: Path to the ARMA 3 server executable
+:: Path to the ARMA 3 server executable, for example C:ARMA\arma3server.exe
 set path_to_server_executable=changeme
 :: name of executable
 set exe_name=arma3server.exe
@@ -16,14 +16,14 @@ set path_to_battleye=changeme
 set battleye=true
 :: set the port number of the ARMA server, default is 2302
 set server_port_number=0
-:: Name of server profile
+:: Name of server profile, for example CSG
 set profile_name=changeme
 :: List of server side mods, Add the mod to modlist for example adding Mod3 to set modlist=@Mod1; @Mod2;
 :: You would do: set modlist=@Mod1; @Mod2; @Mod3;
 set modlist=@Mod1; @Mod2; @Mod3;
-:: basic.cfg location
+:: basic.cfg location, for example C:ARMA\basic.cfg
 set path_to_basic_cfg=changeme
-:: server.cfg location
+:: server.cfg/config.cfg location, for example C:ARMA\server.cfg
 set path_to_server_cfg=changeme
 :: Path to the ARMA directory, for example C:ARMA\
 set path_to_arma_directory=changeme
@@ -33,7 +33,7 @@ set path_to_arma_directory=changeme
 set extra_launch_parameters=""
 
 :: If you want to use the profile deleter for possible performance increase
-:: set the path to server.vars.Arma3Profile, for example C:\arma\CSG\Users\CSG\CSG.vars.Arma3Profile
+:: set the path to server.vars.Arma3Profile, for example C:\ARMA\CSG\Users\CSG.vars.Arma3Profile
 set path_to_ServervarsArma3Profile=changeme
 
 :: Memory allocator, default is tbb4malloc_bi
@@ -43,16 +43,22 @@ set malloc_name=tbb4malloc_bi
 :: If you are using the SQL backup:
 :: set backup=true
 set backup=false
-:: set the directory to the .bat filePatching
+:: set the directory to the .bat filePatching, for example C:ARMA\backup.bat
 set path_to_sql_backup=changeme
 
 :: If you are using the MissionPrefetchServer:
 :: set mission_prefetch=true
 set mission_prefetch=false
-:: set the path to the MissionPrefetchServer executable
+:: set the path to the MissionPrefetchServer executable, for example C:ARMA\MissionPrefetchServer.exe
 set path_to_mission_prefetch_server_executable=changeme
+:: if you don't want GetIP.exe to get the server ip, set auto_find_ip=false and set server_ip_address= your ip
+set auto_find_ip=true
 :: set the IP address of the MissionPrefetchServer, uses GetIP.exe
-for /f %%a in ('GetIP.exe') do set "server_ip_address=%%a"
+set server_ip_address="0.0.0.0"
+if "%auto_find_ip%" == "true" (
+	:: set the IP address of the MissionPrefetchServer, uses GetIP.exe
+	for /f %%a in ('GetIP.exe') do set "server_ip_address=%%a"
+)
 :: set the wait time of the MissionPrefetchServer
 set wait_time_in_seconds=0
 :: set the port of the MissionPrefetchServer (different to the ARMA server)
