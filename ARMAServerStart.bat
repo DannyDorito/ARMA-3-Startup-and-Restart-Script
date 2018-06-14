@@ -57,7 +57,7 @@ set auto_find_ip=true
 set server_ip_address="0.0.0.0"
 if "%auto_find_ip%" == "true" (
 	:: set the IP address of the MissionPrefetchServer, uses GetIP.exe
-	for /f %%a in ('GetIP.exe -public') do set "server_ip_address=%%a"
+	for /f %%a in ('GetIP.exe -public -v4') do set "server_ip_address=%%a"
 )
 :: set the wait time of the MissionPrefetchServer
 set wait_time_in_seconds=0
