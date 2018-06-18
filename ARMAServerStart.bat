@@ -54,7 +54,7 @@ set path_to_mission_prefetch_server_executable=changeme
 :: if you don't want GetIP.exe to get the server ip, set auto_find_ip=false and set server_ip_address= your ip
 set auto_find_ip=true
 :: set the IP address of the MissionPrefetchServer, uses GetIP.exe
-set server_ip_address="0.0.0.0"
+set server_ip_address="null"
 if "%auto_find_ip%" == "true" (
 	:: set the IP address of the MissionPrefetchServer, uses GetIP.exe
 	for /f %%a in ('GetIP.exe -public -v4') do set "server_ip_address=%%a"
@@ -79,7 +79,6 @@ set account_password=changeme
 :: DO NOT CHANGE ANYTHING BELOW THIS POINT
 ::
 set error=""
-set loops=0
 
 echo Pre startup initialised
 echo Starting vars checks
@@ -154,6 +153,7 @@ if "%use_steam_updater%" == "true" (
 	)
 )
 echo Vars checks completed
+set loops=0
 
 :loop
 C:\Windows\System32\tasklist /FI %path_to_server_executable% 2>NUL | C:\Windows\System32\find /I /N %exe_name%>NUL
