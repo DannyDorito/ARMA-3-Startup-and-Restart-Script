@@ -8,7 +8,7 @@ This is .bat file for **all** your ARMA 3 Exile Server startup needs!
 Created by: **Jstrow** and **DannyDorito** originally for [CSG Exile](https://www.csgcommunity.com)
 
 ## Features:
-* Server startup - parameters, mods, optional arguments for potential performance increase
+* Server startup - parameters, mods, server mods, optional arguments for potential performance increase
 * Crash/Restart monitor - this uses the Windows Task Manager and not local address pinging
 * The last start date and time of the server
 * Support for 64bit servers
@@ -56,7 +56,7 @@ If it is a client mod (e.g. JSRS or Blastcore) then there is **no need to add it
 
 It is **strongly** advised to move these off the system your server runs on.
 
-Google Drive sync can be used to automatically upload the files to a external cloud, but other solutions are available!
+Google Drive Sync can be used to automatically upload the files to a external cloud, but other solutions are available!
 
 ### Where do I download x?
 
