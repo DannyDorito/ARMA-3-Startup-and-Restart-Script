@@ -21,6 +21,9 @@ set profile_name=changeme
 :: List of server side mods, Add the mod to modlist for example adding Mod3 to set modlist=@Mod1; @Mod2;
 :: You would do: set modlist=@Mod1; @Mod2; @Mod3;
 set modlist=@Mod1; @Mod2; @Mod3;
+:: List of server side mods, Add the mod to servermodlist for example adding ServerMod3 to set servermodlist=@ServerMod1; @ServerMod2;
+:: You would do: set servermodlist=@ServerMod1; @ServerMod2; @ServerMod3;
+set servermodlist=@ServerMod1; @ServerMod2; @ServerMod3;
 :: basic.cfg location, for example C:ARMA\basic.cfg
 set path_to_basic_cfg=changeme
 :: server.cfg/config.cfg location, for example C:ARMA\server.cfg
@@ -104,6 +107,10 @@ if "%battleye%" == "true" (
 )
 if "%modlist%" == "@Mod1; @Mod2; @Mod3;" (
 	set error=modlist
+	goto error
+)
+if "%servermodlist%" == "@ServerMod1; @ServerMod2; @ServerMod3;" (
+	set error=servermodlist=
 	goto error
 )
 if "%path_to_basic_cfg%" == "changeme" (
@@ -196,10 +203,10 @@ echo Restarts/Crashes: %loops%
 :: Start the Arma Server
 cd %path_to_server_executable%
 if "%battleye%" == "true" (
-	start "%profile_name%" /min /wait %exe_name% "-mod=%modlist%" "-config=%path_to_server_cfg%" -port=%server_port_number% "-profiles=%profile_name%" "-cfg=%path_to_basic_cfg%" "-bepath=%path_to_battleye%" -name=%profile_name% -high -autoInit -malloc=%malloc_name% %extra_launch_parameters%
+	start "%profile_name%" /min /wait %exe_name% "-mod=%modlist%" "-config=%path_to_server_cfg%" -port=%server_port_number% "-profiles=%profile_name%" "-cfg=%path_to_basic_cfg%" "-bepath=%path_to_battleye%" -name=%profile_name% -high -autoInit -malloc=%malloc_name% %extra_launch_parameters% -serverMod=%servermodlist%
 )
 if "%battleye%" == "false" (
-	start "%profile_name%" /min /wait %exe_name% "-mod=%modlist%" "-config=%path_to_server_cfg%" -port=%server_port_number% "-profiles=%profile_name%" "-cfg=%path_to_basic_cfg%" -name=%profile_name% -high -autoInit -malloc=%malloc_name% %extra_launch_parameters%
+	start "%profile_name%" /min /wait %exe_name% "-mod=%modlist%" "-config=%path_to_server_cfg%" -port=%server_port_number% "-profiles=%profile_name%" "-cfg=%path_to_basic_cfg%" -name=%profile_name% -high -autoInit -malloc=%malloc_name% %extra_launch_parameters% -serverMod=%servermodlist%
 )
 echo To stop the server, close ARMAServerStart.bat then the other tasks, otherwise it will restart
 echo.
@@ -224,5 +231,5 @@ goto loop
 :: Generic error catching
 cls
 COLOR C
-echo ERROR: "%error%" not set correctly
+echo ERROR: "%error%" not set correctly!
 pause
