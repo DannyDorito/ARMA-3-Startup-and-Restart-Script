@@ -1,16 +1,14 @@
 # ARMA 3 (Exile) Startup & Restart Script
 Originally created for the Exile Mod, but can be used for any ARMA 3 Server
 
-We all would **love** to see more Exile Mod servers, so why not create one?
-
-This is .bat file for **all** your ARMA 3 Exile Server startup needs!
+This is .bat file for **all** your ARMA 3 Server startup needs!
 
 Created by: **Jstrow** and **DannyDorito** originally for [CSG Exile](https://www.csgcommunity.com)
 
 ## Features:
 * Server startup - parameters, mods, server mods, optional arguments for potential performance increase
 * Crash/Restart monitor - this uses the Windows Task Manager and not local address pinging
-* The last start date and time of the server
+* The last start date & time of the server
 * Support for 64bit servers
 * Optional Profile.vars.Arma3Profile deleter, potential performance increase
 * Optional Database backup script
