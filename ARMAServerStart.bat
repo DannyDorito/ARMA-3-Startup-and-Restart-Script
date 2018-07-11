@@ -4,17 +4,19 @@
 ::
 @echo off
 :: Command window name, does not affect anything else
+:: Default is: ARMA Server #1
 set server_name=ARMA Server #1
 
 :: Path to the ARMA 3 server executable, for example C:ARMA\arma3server.exe
 set path_to_server_executable=changeme
-:: name of executable
+:: Name of executable
+:: Default 32bit is arma3server.exe, default 64bit is arma3server_x64.exe
 set exe_name=arma3server.exe
 :: Path to battleye folder, for example C:ARMA\battleye
 set path_to_battleye=changeme
-:: If you are not using battleye then battleye=false
-set battleye=true
-:: set the port number of the ARMA server, default is 2302
+:: If you are  using battleye then battleye=true, default is false
+set battleye=false
+:: set the port number of the ARMA server, default ARMA is 2302
 set server_port_number=0
 :: Name of server profile, for example CSG
 set profile_name=changeme
@@ -32,29 +34,30 @@ set path_to_server_cfg=changeme
 set path_to_arma_directory=changeme
 :: Extra launch parameters
 :: For more info see: https://community.bistudio.com/wiki/ArmA:_Server_configuration
-:: We used -autoinit -enableHT -loadMissionToMemory -high -filePatching -hugepages -bandwidthAlg=2, however your mileage may vary
+:: We used: -autoinit -enableHT -loadMissionToMemory -high -filePatching -hugepages -bandwidthAlg=2, however your mileage may vary
 set extra_launch_parameters=""
 
 :: If you want to use the profile deleter for possible performance increase
 :: set the path to server.vars.Arma3Profile, for example C:\ARMA\CSG\Users\CSG.vars.Arma3Profile
 set path_to_ServervarsArma3Profile=changeme
 
-:: Memory allocator, default is tbb4malloc_bi
 :: For more info see: https://community.bistudio.com/wiki/Arma_3:_Custom_Memory_Allocator
+:: Default is tbb4malloc_bi
 set malloc_name=tbb4malloc_bi
 
-:: If you are using the SQL backup:
-:: set backup=true
+:: If you are using the SQL backup set backup=true
+:: Default is false
 set backup=false
 :: set the directory to the .bat filePatching, for example C:ARMA\backup.bat
 set path_to_sql_backup=changeme
 
-:: If you are using the MissionPrefetchServer:
-:: set mission_prefetch=true
+:: If you are using the MissionPrefetchServer, set mission_prefetch=true
+:: Default is false
 set mission_prefetch=false
 :: set the path to the MissionPrefetchServer executable, for example C:ARMA\MissionPrefetchServer.exe
 set path_to_mission_prefetch_server_executable=changeme
 :: if you don't want GetIP.exe to get the server ip, set auto_find_ip=false and set server_ip_address= your ip
+:: Default is true
 set auto_find_ip=true
 :: set the IP address of the MissionPrefetchServer, uses GetIP.exe
 set server_ip_address="null"
@@ -71,6 +74,7 @@ set path_to_mission_pbo=changeme
 
 :: If you are using the SteamCMD updater:
 :: set use_steam_updater=true
+:: Default is false
 set use_steam_updater=false
 :: set the path to the SteamCMD executable
 set path_to_steamcmd_executable=changeme
@@ -79,7 +83,8 @@ set account_name=changeme
 :: set the above Steam account password
 set account_password=changeme
 ::
-:: DO NOT CHANGE ANYTHING BELOW THIS POINT
+:: DO NOT CHANGE ANYTHING BELOW THIS POINT#
+:: UNLESS YOU KNOW WHAT YOU ARE DOING
 ::
 set error=""
 
@@ -125,7 +130,6 @@ if "%path_to_arma_directory%" == "changeme" (
 	set error=path_to_arma_directory
 	goto error
 )
-
 if "%mission_prefetch%" == "true" (
 	if "%server_ip_address%" == "null" (
 		set error=server_ip_address
@@ -144,7 +148,6 @@ if "%mission_prefetch%" == "true" (
 		goto error
 	)
 )
-
 if "%use_steam_updater%" == "true" (
 		if "%path_to_steamcmd_executable%" == "changeme" (
 		set error=path_to_steamcmd_executable
@@ -159,7 +162,7 @@ if "%use_steam_updater%" == "true" (
 		goto error
 	)
 )
-echo Vars checks completed
+echo Variable checks completed
 set loops=0
 
 :loop
@@ -179,7 +182,7 @@ if "%backup%" == "true" (
 )
 
 :: Get from here https://a3.launcher.eu/download
-:: If you use the optional Arma 3 Launcher Mission Prefetch
+:: If you use the optional ARMA 3 Launcher Mission Prefetch
 if "%mission_prefetch%" == "true" (
 	echo Starting MissionPrefetchServer
 	start /wait %path_to_mission_prefetch_server_executable% %server_port_number% %path_to_mission_pbo% %server_ip_address% %mission_prefetch_server_port% %wait_time_in_seconds%
@@ -200,7 +203,7 @@ echo.
 echo Starting server at: %date%,%time%
 echo Restarts/Crashes: %loops%
 
-:: Start the Arma Server
+:: Start the ARMA Server
 cd %path_to_server_executable%
 if "%battleye%" == "true" (
 	start "%profile_name%" /min /wait %exe_name% "-mod=%modlist%" "-config=%path_to_server_cfg%" -port=%server_port_number% "-profiles=%profile_name%" "-cfg=%path_to_basic_cfg%" "-bepath=%path_to_battleye%" -name=%profile_name% -high -autoInit -malloc=%malloc_name% %extra_launch_parameters% -serverMod=%servermodlist%
@@ -230,6 +233,6 @@ goto loop
 :error
 :: Generic error catching
 cls
-COLOR C
-echo ERROR: "%error%" not set correctly!
+color C
+echo ERROR: "%error%" not set correctly, please check the config
 pause
