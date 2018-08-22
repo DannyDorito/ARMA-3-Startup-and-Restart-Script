@@ -61,7 +61,8 @@ set path_to_mission_prefetch_server_executable=changeme
 set auto_find_ip=true
 :: set the IP address of the MissionPrefetchServer, uses GetIP.exe
 set server_ip_address="null"
-if "%auto_find_ip%" == "true" (
+if "%auto_find_ip%" == "true"
+(
 	:: set the IP address of the MissionPrefetchServer, uses GetIP.exe
 	for /f %%a in ('GetIP.exe -public -v4') do set "server_ip_address=%%a"
 )
@@ -92,72 +93,90 @@ echo Pre startup initialised
 echo Starting vars checks
 title %server_name%
 
-if "%path_to_server_executable%" == "changeme" (
+if "%path_to_server_executable%" == "changeme"
+(
 	set error=path_to_server_executable
 	goto error
 )
-if "%server_port_number%" == "0" (
+if "%server_port_number%" == "0"
+(
 	set error=server_port_number
 	goto error
 )
-if "%profile_name%" == "changeme" (
+if "%profile_name%" == "changeme"
+(
 	set error=profile_name
 	goto error
 )
-if "%battleye%" == "true" (
-	if "%path_to_battleye%" == "changeme" (
+if "%battleye%" == "true"
+(
+	if "%path_to_battleye%" == "changeme"
+	(
 	set error=path_to_battleye
 	goto error
 	)
 )
-if "%modlist%" == "@Mod1; @Mod2; @Mod3;" (
+if "%modlist%" == "@Mod1; @Mod2; @Mod3;"
+(
 	set error=modlist
 	goto error
 )
-if "%servermodlist%" == "@ServerMod1; @ServerMod2; @ServerMod3;" (
+if "%servermodlist%" == "@ServerMod1; @ServerMod2; @ServerMod3;"
+(
 	set error=servermodlist=
 	goto error
 )
-if "%path_to_basic_cfg%" == "changeme" (
+if "%path_to_basic_cfg%" == "changeme"
+(
 	set error=path_to_basic_cfg
 	goto error
 )
-if "%path_to_server_cfg%" == "changeme" (
+if "%path_to_server_cfg%" == "changeme"
+(
 	set error=path_to_server_cfg
 	goto error
 )
-if "%path_to_arma_directory%" == "changeme" (
+if "%path_to_arma_directory%" == "changeme"
+(
 	set error=path_to_arma_directory
 	goto error
 )
-if "%mission_prefetch%" == "true" (
-	if "%server_ip_address%" == "null" (
+if "%mission_prefetch%" == "true"
+(
+	if "%server_ip_address%" == "null"
+	(
 		set error=server_ip_address
 		goto error
 	)
-	if "%wait_time_in_seconds%" == "0" (
+	if "%wait_time_in_seconds%" == "0"
+	(
 		set error=wait_time_in_seconds
 		goto error
 	)
-	if "%mission_prefetch_server_port%" == "0" (
+	if "%mission_prefetch_server_port%" == "0"
+	(
 		set error=mission_prefetch_server_port
 		goto error
 	)
-	if "%path_to_mission_pbo%" == "changeme" (
+	if "%path_to_mission_pbo%" == "changeme"
+	(
 		set error=path_to_server_executable
 		goto error
 	)
 )
 if "%use_steam_updater%" == "true" (
-		if "%path_to_steamcmd_executable%" == "changeme" (
+	if "%path_to_steamcmd_executable%" == "changeme"
+	(
 		set error=path_to_steamcmd_executable
 		goto error
 	)
-	if "%account_name%" == "changeme" (
+	if "%account_name%" == "changeme"
+	(
 		set error=account_name
 		goto error
 	)
-	if "%account_password%" == "changeme" (
+	if "%account_password%" == "changeme"
+	(
 		set error=account_password
 		goto error
 	)
@@ -168,14 +187,16 @@ set loops=0
 :loop
 C:\Windows\System32\tasklist /FI %path_to_server_executable% 2>NUL | C:\Windows\System32\find /I /N %exe_name%>NUL
 if "%ERRORLEVEL%" == "0" goto loop
-if "%path_to_ServervarsArma3Profile%" != "changeme" (
+if "%path_to_ServervarsArma3Profile%" != "changeme"
+(
 	echo Deleting %profile_name%
 	del /Q /F %path_to_ServervarsArma3Profile%
 	echo Delete complete
-}
+)
 
 :: Uses https://www.redolive.com/utah-web-designers-blog/automated-mysql-backup-for-windows
-if "%backup%" == "true" (
+if "%backup%" == "true"
+(
 	echo Starting Database Backup
 	start /wait %path_to_sql_backup%
 	echo Database backup complete
@@ -183,7 +204,8 @@ if "%backup%" == "true" (
 
 :: Get from here https://a3.launcher.eu/download
 :: If you use the optional ARMA 3 Launcher Mission Prefetch
-if "%mission_prefetch%" == "true" (
+if "%mission_prefetch%" == "true"
+(
 	echo Starting MissionPrefetchServer
 	start /wait %path_to_mission_prefetch_server_executable% %server_port_number% %path_to_mission_pbo% %server_ip_address% %mission_prefetch_server_port% %wait_time_in_seconds%
 	echo MissionPrefetchServer Started
@@ -191,7 +213,8 @@ if "%mission_prefetch%" == "true" (
 
 :: Steam automatic update for the server files
 :: Get from here https://developer.valvesoftware.com/wiki/SteamCMD
-if "%use_steam_updater%" == "true" (
+if "%use_steam_updater%" == "true"
+(
 	echo Steam Automatic Update Starting
 	start /wait %path_to_steamcmd_executable% +login %account_name% %account_password% +force_install_dir %path_to_arma_directory% +app_update 233780 validate +quit
 	echo Steam Automatic Update Completed
@@ -205,10 +228,12 @@ echo Restarts/Crashes: %loops%
 
 :: Start the ARMA Server
 cd %path_to_server_executable%
-if "%battleye%" == "true" (
+if "%battleye%" == "true"
+(
 	start "%profile_name%" /min /wait %exe_name% "-mod=%modlist%" "-config=%path_to_server_cfg%" -port=%server_port_number% "-profiles=%profile_name%" "-cfg=%path_to_basic_cfg%" "-bepath=%path_to_battleye%" -name=%profile_name% -high -autoInit -malloc=%malloc_name% %extra_launch_parameters% -serverMod=%servermodlist%
 )
-if "%battleye%" == "false" (
+if "%battleye%" == "false"
+(
 	start "%profile_name%" /min /wait %exe_name% "-mod=%modlist%" "-config=%path_to_server_cfg%" -port=%server_port_number% "-profiles=%profile_name%" "-cfg=%path_to_basic_cfg%" -name=%profile_name% -high -autoInit -malloc=%malloc_name% %extra_launch_parameters% -serverMod=%servermodlist%
 )
 echo To stop the server, close ARMAServerStart.bat then the other tasks, otherwise it will restart
@@ -224,7 +249,8 @@ echo Server is already running, running monitoring loop
 set /A crashes+=1
 C:\Windows\System32\timeout /t 5
 C:\Windows\System32\tasklist /FI "%path_to_server_executable% eq %exe_name%" 2>NUL | C:\Windows\System32\find /I /N %exe_name%>NUL
-if "%mission_prefetch%"=="true" (
+if "%mission_prefetch%"=="true"
+(
 	taskkill /F /IM MissionPrefetchServer.exe
 )
 if "%ERRORLEVEL%"=="0" goto loop
