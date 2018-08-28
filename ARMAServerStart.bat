@@ -73,7 +73,7 @@ if "%auto_find_ip%" == "true" (
 set wait_time_in_seconds=0
 :: set the port of the MissionPrefetchServer (different to the ARMA server)
 set mission_prefetch_server_port=0
-:: set the path of the mission pbo that you wish to use the MissionPrefetchServer with
+:: set the path of the mission pbo that you wish to use the MissionPrefetchServer with, usually gameport + 7
 set path_to_mission_pbo=changeme
 
 :: If you are using the SteamCMD updater:
