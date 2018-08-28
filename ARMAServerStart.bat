@@ -51,11 +51,14 @@ set backup=false
 :: set the directory to the .bat filePatching, for example C:ARMA\backup.bat
 set path_to_sql_backup=changeme
 
+:: For more info see: https://a3.launcher.eu/download
 :: If you are using the MissionPrefetchServer, set mission_prefetch=true
 :: Default is false
 set mission_prefetch=false
 :: set the path to the MissionPrefetchServer executable, for example C:ARMA\MissionPrefetchServer.exe
 set path_to_mission_prefetch_server_executable=changeme
+:: set the mission prefetch executable name, for example MissionPrefetchServer.exe
+set mission_prefetch_exe_name=MissionPrefetchServer.exe
 :: if you don't want GetIP.exe to get the server ip, set auto_find_ip=false and set server_ip_address= your ip
 :: Default is true
 set auto_find_ip=true
@@ -224,7 +227,7 @@ echo.
 echo Pre startup complete
 echo.
 echo Starting server at: %date%,%time%
-echo Restarts/Crashes: %loops%
+echo Restarts: %loops%
 
 :: Start the ARMA Server
 cd %path_to_server_executable%
@@ -251,7 +254,7 @@ C:\Windows\System32\timeout /t 5
 C:\Windows\System32\tasklist /FI "%path_to_server_executable% eq %exe_name%" 2>NUL | C:\Windows\System32\find /I /N %exe_name%>NUL
 if "%mission_prefetch%"=="true"
 (
-	taskkill /F /IM MissionPrefetchServer.exe
+	taskkill /F /IM "%mission_prefetch_exe_name%"
 )
 if "%ERRORLEVEL%"=="0" goto loop
 goto loop

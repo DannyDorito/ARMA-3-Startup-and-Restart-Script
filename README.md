@@ -65,11 +65,11 @@ Google Drive Sync can be used to automatically upload the files to a external cl
 
 #### Exile Mod client & server files
 
-[Exile Mod Download](http://www.exilemod.com/downloads)
+[Exile Mod Download](https://exilemod.com/downloads)
 
 #### ARMA 3 Launcher Server Prefetch
 
-[ARMA 3 Launcher Server Prefetch Download](https://a3.launcher.eu/MissionPrefetchServer.zip)
+[ARMA 3 Launcher Server Prefetch Download](https://a3.launcher.eu/download)
 
 #### SteamCMD
 
