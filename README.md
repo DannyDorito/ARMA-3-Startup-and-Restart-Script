@@ -29,7 +29,7 @@ Created by: **Jstrow** and **DannyDorito** originally for [CSG Exile](https://ww
 * Optional A3Launcher automatic updater for mods
 * Database file sync to cloud storage
 * Automatic PBO packer with Mikero's tools support
-* Getting IP from ipconfig, not GetIP.exe
+* Getting IP from ipconfig, not GetIP.exe **important**
 
 ## FAQ
 
