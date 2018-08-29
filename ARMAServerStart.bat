@@ -180,7 +180,7 @@ set loops=0
 :loop
 C:\Windows\System32\tasklist /FI %path_to_server_executable% 2>NUL | C:\Windows\System32\find /I /N %exe_name%>NUL
 if "%ERRORLEVEL%" == "0" goto loop
-if "%path_to_ServervarsArma3Profile%" != "changeme" (
+if "%path_to_ServervarsArma3Profile%" NEQ "changeme" (
 	echo Deleting %profile_name%
 	del /Q /F %path_to_ServervarsArma3Profile%
 	echo Delete complete
