@@ -13,9 +13,9 @@ set path_to_server_executable=changeme
 :: Name of executable
 :: Default 32bit is arma3server.exe, default 64bit is arma3server_x64.exe
 set exe_name=arma3server.exe
-:: Path to battleye folder, for example C:ARMA\battleye
+:: Path to BattlEye folder, for example C:ARMA\battleye
 set path_to_battleye=changeme
-:: If you are  using battleye then battleye=true, default is false
+:: If you are  using BattlEye then battleye=true, default is false
 set battleye=false
 :: set the port number of the ARMA server, default ARMA is 2302
 set server_port_number=0
@@ -60,14 +60,18 @@ set mission_prefetch=false
 set path_to_mission_prefetch_server_executable=changeme
 :: set the mission prefetch executable name, for example MissionPrefetchServer.exe
 set mission_prefetch_exe_name=MissionPrefetchServer.exe
-:: if you don't want GetIP.exe to get the server ip, set auto_find_ip=false and set server_ip_address= your ip
+:: if you don't want to automatically get the server ip, set auto_find_ip=false and set server_ip_address= to your ip
 :: Default is true
 set auto_find_ip=true
-:: set the IP address of the MissionPrefetchServer, uses GetIP.exe
-set server_ip_address="null"
+:: set the IP address of the MissionPrefetchServer
+set server_ip_address=changeme
 if "%auto_find_ip%" == "true" (
-	:: set the IP address of the MissionPrefetchServer, uses GetIP.exe
-	for /f %%a in ('GetIP.exe -public -v4') do set "server_ip_address=%%a"
+	echo Automatically looking up IP Address...
+	echo Ensure that "myip.opendns.com. resolver1.opendns.com" can be reached by the server
+	:: set the IP address of the MissionPrefetchServer
+	for /f "tokens=2 delims=: " %%A in ('nslookup myip.opendns.com. resolver1.opendns.com 2^>NUL^|find "Address:"') do (
+		set server_ip_address=%%A
+	)
 )
 :: set the wait time of the MissionPrefetchServer
 set wait_time_in_seconds=0
@@ -135,7 +139,7 @@ if "%path_to_arma_directory%" == "changeme" (
 	goto error
 )
 if "%mission_prefetch%" == "true" (
-	if "%server_ip_address%" == "null" (
+	if "%server_ip_address%" == "changeme" (
 		set error=server_ip_address
 		goto error
 	)
