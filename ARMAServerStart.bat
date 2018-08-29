@@ -184,7 +184,7 @@ if "%move_backup%" == "true" (
 		set error=backup_from
 		goto error
 	)
-	if "%backup_to%"" == "changeme" (
+	if "%backup_to%" == "changeme" (
 		set error=backup_to
 		goto error
 	)
