@@ -4,6 +4,8 @@
 ::
 @echo off
 color F
+echo Pre startup initialised
+echo.
 :: Command window name, does not affect anything else
 :: Default is: ARMA Server #1
 set server_name=ARMA Server #1
@@ -91,12 +93,12 @@ set account_name=changeme
 :: set the above Steam account password
 set account_password=changeme
 ::
-:: DO NOT CHANGE ANYTHING BELOW THIS POINT#
+:: DO NOT CHANGE ANYTHING BELOW THIS POINT
 :: UNLESS YOU KNOW WHAT YOU ARE DOING
 ::
 set error=""
 
-echo Pre startup initialised
+echo.
 echo Starting vars checks
 title %server_name%
 
@@ -170,7 +172,9 @@ if "%use_steam_updater%" == "true" (
 		goto error
 	)
 )
-echo Variable checks completed
+echo.
+echo Variable checks completed!
+echo.
 set loops=0
 
 :loop
@@ -206,10 +210,12 @@ if "%use_steam_updater%" == "true" (
 )
 
 echo.
-echo Pre startup complete
+echo Pre startup complete!
 echo.
 echo Starting server at: %date%,%time%
-echo Restarts: %loops%
+if "%loops%" NEQ "0" (
+	echo Restarts: %loops%
+)
 
 :: Start the ARMA Server
 cd %path_to_server_executable%
@@ -240,7 +246,6 @@ goto loop
 
 :error
 :: Generic error catching
-cls
 color C
 echo ERROR: %error% not set correctly, please check the config
 pause
