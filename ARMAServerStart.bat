@@ -244,3 +244,4 @@ cls
 color C
 echo ERROR: %error% not set correctly, please check the config
 pause
+color F
