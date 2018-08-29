@@ -6,6 +6,12 @@ This is .bat file for **all** your ARMA 3 Server startup needs!
 
 Created by: **Jstrow** and **DannyDorito** originally for [CSG Exile](https://www.csgcommunity.com)
 
+## Check out our Twitter
+
+[@DannyDorito_](https://twitter.com/DannyDorito_)
+
+[@CSG_Exile](https://twitter.com/CSG_Exile)
+
 ## Features
 
 * Server startup - parameters, mods, server mods, optional arguments for potential performance increase
@@ -23,6 +29,7 @@ Created by: **Jstrow** and **DannyDorito** originally for [CSG Exile](https://ww
 * Optional A3Launcher automatic updater for mods
 * Database file sync to cloud storage
 * Automatic PBO packer with Mikero's tools support
+* Getting IP from ipconfig, not GetIP.exe
 
 ## FAQ
 
@@ -81,6 +88,12 @@ Google Drive Sync can be used to automatically upload the files to a external cl
 
 [Armaholic Link](http://www.armaholic.com)
 
+[ModDB Link](https://www.moddb.com/games/arma-3/mods)
+
+[Bohemia's Forum](https://forums.bohemia.net/forums/forum/156-arma-3-addons-mods-complete)
+
+[Nexus Mods](https://www.nexusmods.com/arma3)
+
 #### MySQL Backup
 
 [MySQL Backup](https://www.redolive.com/utah-web-designers-blog/automated-mysql-backup-for-windows)
@@ -88,9 +101,3 @@ Google Drive Sync can be used to automatically upload the files to a external cl
 ### Will you add x feature, why is x broken
 
 Create a new issue or send Danny Dorito a message on Twitter and we can see what we can do!
-
-## Check out our Twitter
-
-[@DannyDorito_](https://twitter.com/DannyDorito_)
-
-[@CSG_Exile](https://twitter.com/CSG_Exile)
