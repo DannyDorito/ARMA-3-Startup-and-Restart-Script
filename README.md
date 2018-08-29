@@ -19,7 +19,7 @@ Created by: **Jstrow** and **DannyDorito** originally for [CSG Exile](https://ww
 * The last start date & time of the server
 * Support for 64bit servers
 * Optional Profile.vars.Arma3Profile deleter, potential performance increase
-* Optional Database backup script
+* Optional Database backup script, with option to move to another cloud synced directory
 * Optional ARMA 3 Launcher Mission Prefetch from - Allows clients to download server file from A3Launcher
 * Optional Steam Automatic updater for ARMA 3
 
@@ -27,7 +27,6 @@ Created by: **Jstrow** and **DannyDorito** originally for [CSG Exile](https://ww
 
 * Optional Steam automatic updater for mods
 * Optional A3Launcher automatic updater for mods
-* Database file sync to cloud storage
 * Automatic PBO packer with Mikero's tools support
 
 ## FAQ
@@ -58,9 +57,9 @@ If it is a client mod (e.g. JSRS or Blastcore) then there is **no need to add it
 
 ### How do I backup my server with this
 
-* Head to MySQL Backup linked above
+* Head to MySQL Backup linked below
 * Follow the installation instructions on the website **carefully!**
-* Fill in the ``sql_backup_directory`` with the full directory of **your** .bat location.
+* Fill in the ``path_to_sql_backup`` with the full directory of **your** .bat location.
 * This will create a backup of your database every time you start the server.
 
 It is **strongly** advised to move these off the system your server runs on.

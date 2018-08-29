@@ -53,6 +53,13 @@ set malloc_name=tbb4malloc_bi
 set backup=false
 :: set the directory to the .bat filePatching, for example C:ARMA\backup.bat
 set path_to_sql_backup=changeme
+:: if you want the script to move the created SQL backup to another directory, set move_backup=true
+:: Default is false
+set move_backup=false
+:: directory to move the files FROM, for example C:ARMA/backup
+set backup_from=changeme
+:: directory to move files TO, for example C:/dropbox
+set backup_to=changeme
 
 :: For more info see: https://a3.launcher.eu/download
 :: If you are using the MissionPrefetchServer, set mission_prefetch=true
@@ -172,6 +179,16 @@ if "%use_steam_updater%" == "true" (
 		goto error
 	)
 )
+if "%move_backup%" == "true" (
+	if "%backup_from%" == "changeme" (
+		set error=backup_from
+		goto error
+	)
+	if "%backup_to%"" == "changeme" (
+		set error=backup_to
+		goto error
+	)
+)
 echo.
 echo Variable checks completed!
 echo.
@@ -191,6 +208,9 @@ if "%backup%" == "true" (
 	echo Starting Database Backup
 	start /wait %path_to_sql_backup%
 	echo Database backup complete
+	if "%move_backup%" == "true" (
+		move /wait /-Y  "%backup_from%"*.* "%backup_to%"
+	)
 )
 
 :: Get from here https://a3.launcher.eu/download
