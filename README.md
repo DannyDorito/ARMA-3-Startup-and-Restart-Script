@@ -36,7 +36,7 @@ Created by: **Jstrow** and **DannyDorito** originally for [CSG Exile](https://ww
 1. Download the latest version
 2. Place in a suitable directory, for example your Desktop
 3. Replace all of the variables that you require, e.g. ![set path_to_ServervarsArma3Profile=changeme](https://i.imgur.com/svri9W0.png) to: ![set path_to_ServervarsArma3Profile=C:\arma\CSG\Users\CSG\CSG.vars.Arma3Profile](https://i.imgur.com/p27kTKK.png)
-4. Enabling some features, for example to enable Steam auto updates find: ![set use_steam_updater=false](https://i.imgur.com/TdLLngG.png) and change it to: ![set use_steam_updater=true](https://i.imgur.com/S9NnOwk.png) Some features require more variables to be set, if unsure run the ``ARMAServerStart.bat`` file and see if there are any errors **if so**, repeat step 3 and 4.
+4. Enabling some features, for example to enable Steam auto updates find: ![set use_steam_updater=false](https://i.imgur.com/dnlZHqs.png) and change it to: ![set use_steam_updater=true](https://i.imgur.com/7OPRUDR.png) Some features require more variables to be set, if unsure run the ``ARMAServerStart.bat`` file and see if there are any errors **if so**, repeat step 3 and 4.
 5. Run the ``ARMAServerStart.bat`` fill and see if there are any errors, **if so**, repeat step 3 and 4.
 6. To shutdown the server, close the console window first (and all other windows e.g BattleEye or MissionPrefetchServer), **then** shutdown the server or it will automatically restart.
 
