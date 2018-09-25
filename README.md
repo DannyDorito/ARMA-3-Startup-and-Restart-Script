@@ -6,6 +6,8 @@ This is .bat file for **all** your ARMA 3 Server startup needs!
 
 Created by: **Jstrow** and **DannyDorito** originally for [CSG Exile](https://www.csgcommunity.com)
 
+Click [Here](https://github.com/DannyDorito/DayZ-Startup-and-Restart-Script) for the DayZ Version!
+
 ## Check out our Twitter
 
 [@DannyDorito_](https://twitter.com/DannyDorito_)
