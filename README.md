@@ -10,7 +10,7 @@ Click [Here](https://github.com/DannyDorito/DayZ-Startup-and-Restart-Script) for
 
 ## Check out our Twitter
 
-[@DannyDorito_](https://twitter.com/DannyDorito_)
+[@JohnAllis0n](https://twitter.com/JohnAllis0n)
 
 [@CSG_Exile](https://twitter.com/CSG_Exile)
 
