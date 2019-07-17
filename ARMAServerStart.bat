@@ -247,7 +247,7 @@ if "%battleye%" == "true" (
 if "%battleye%" == "false" (
 	start "%profile_name%" /min /wait %exe_name% "-mod=%modlist%" "-config=%path_to_server_cfg%" -port=%server_port_number% "-profiles=%profile_name%" "-cfg=%path_to_basic_cfg%" -name=%profile_name% -high -autoInit -malloc=%malloc_name% %extra_launch_parameters% -serverMod=%servermodlist%
 )
-echo To stop the server, close ARMAServerStart.bat then the other tasks, otherwise it will restart
+echo To stop the server, close %~nx0 then the other tasks, otherwise it will restart
 echo.
 goto looping
 
