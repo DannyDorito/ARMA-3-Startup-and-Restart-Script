@@ -259,7 +259,7 @@ echo Server is already running, running monitoring loop
 :: Restart/Crash Handler
 set /A crashes+=1
 timeout /t 5
-tasklist /FI "%tasklist_name%" 2>NUL | find /I /N "%exe_name%">NUL
+tasklist /FI "%tasklist_name%" 2>NUL | find /I /N "%server_port_number%">NUL
 if "%mission_prefetch%"=="true" (
 	taskkill /F /IM %mission_prefetch_exe_name%
 )
