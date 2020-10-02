@@ -132,7 +132,7 @@ if "%modlist%" == "@Mod1; @Mod2; @Mod3;" (
 	goto error
 )
 if "%servermodlist%" == "@ServerMod1; @ServerMod2; @ServerMod3;" (
-	set error=servermodlist=
+	set error=servermodlist
 	goto error
 )
 if "%path_to_basic_cfg%" == "changeme" (
