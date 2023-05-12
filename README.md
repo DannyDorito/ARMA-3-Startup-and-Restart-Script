@@ -89,8 +89,6 @@ Google Drive Sync can be used to automatically upload the files to a external cl
 
 [Steam Workshop](https://developer.valvesoftware.com/wiki/SteamCMD)
 
-[Armaholic Link](http://www.armaholic.com)
-
 [ModDB Link](https://www.moddb.com/games/arma-3/mods)
 
 [Bohemia's Forum](https://forums.bohemia.net/forums/forum/156-arma-3-addons-mods-complete)
