@@ -25,7 +25,6 @@ Click [Here](https://github.com/DannyDorito/DayZ-Startup-and-Restart-Script) for
 * Support for 64bit servers
 * Optional Profile.vars.Arma3Profile delete with potential performance increase
 * Optional Database backup script, with option to move to another cloud synced directory
-* Optional ARMA 3 Launcher Mission Prefetch from - Allows clients to download server file from A3Launcher
 * Optional Steam Automatic updater for ARMA 3
 
 ## Features to be added
@@ -77,17 +76,13 @@ Google Drive Sync can be used to automatically upload the files to a external cl
 
 [Exile Mod Download](https://exilemod.com/downloads)
 
-#### ARMA 3 Launcher Server Prefetch
-
-[ARMA 3 Launcher Server Prefetch Download](https://a3.launcher.eu/download)
-
 #### SteamCMD
 
 [SteamCMD Wiki](https://developer.valvesoftware.com/wiki/SteamCMD)
 
 #### ARMA Mods
 
-[Steam Workshop](https://developer.valvesoftware.com/wiki/SteamCMD)
+[Steam Workshop](https://steamcommunity.com/app/107410/workshop/)
 
 [ModDB Link](https://www.moddb.com/games/arma-3/mods)
 

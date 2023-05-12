@@ -82,12 +82,6 @@ if "%auto_find_ip%" == "true" (
 		set server_ip_address=%%A
 	)
 )
-:: set the wait time of the MissionPrefetchServer
-set wait_time_in_seconds=0
-:: set the port of the MissionPrefetchServer (different to the ARMA server)
-set mission_prefetch_server_port=0
-:: set the path of the mission pbo that you wish to use the MissionPrefetchServer with, usually gameport + 7
-set path_to_mission_pbo=changeme
 
 :: If you are using the SteamCMD updater:
 :: set use_steam_updater=true
@@ -147,24 +141,6 @@ if "%path_to_arma_directory%" == "changeme" (
 	set error=path_to_arma_directory
 	goto error
 )
-if "%mission_prefetch%" == "true" (
-	if "%server_ip_address%" == "changeme" (
-		set error=server_ip_address
-		goto error
-	)
-	if "%wait_time_in_seconds%" == "0" (
-		set error=wait_time_in_seconds
-		goto error
-	)
-	if "%mission_prefetch_server_port%" == "0" (
-		set error=mission_prefetch_server_port
-		goto error
-	)
-	if "%path_to_mission_pbo%" == "changeme" (
-		set error=path_to_server_executable
-		goto error
-	)
-)
 if "%use_steam_updater%" == "true" (
 	if "%path_to_steamcmd_executable%" == "changeme" (
 		set error=path_to_steamcmd_executable
@@ -215,14 +191,6 @@ if "%backup%" == "true" (
 	)
 )
 
-:: Get from here https://a3.launcher.eu/download
-:: If you use the optional ARMA 3 Launcher Mission Prefetch
-if "%mission_prefetch%" == "true" (
-	echo Starting MissionPrefetchServer
-	start /wait %path_to_mission_prefetch_server_executable% %server_port_number% %path_to_mission_pbo% %server_ip_address% %mission_prefetch_server_port% %wait_time_in_seconds%
-	echo MissionPrefetchServer Started
-)
-
 :: Steam automatic update for the server files
 :: Get from here https://developer.valvesoftware.com/wiki/SteamCMD
 if "%use_steam_updater%" == "true" (
@@ -260,9 +228,6 @@ echo Server is already running, running monitoring loop
 set /A loops+=1
 timeout /t 5
 tasklist /FI "%tasklist_name%" 2>NUL | find /I /N "%server_port_number%">NUL
-if "%mission_prefetch%"=="true" (
-	taskkill /F /IM %mission_prefetch_exe_name%
-)
 if "%ERRORLEVEL%"=="0" goto loop
 goto loop
 
